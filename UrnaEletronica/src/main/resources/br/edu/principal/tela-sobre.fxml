@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="543.0" prefWidth="630.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.principal.TelaSobre">
+    <children>
+        <Rectangle arcWidth="5.0" fill="#135000" height="70.0" smooth="false" stroke="BLACK" strokeMiterLimit="0.0" strokeType="INSIDE" strokeWidth="0.0" width="631.0" />
+        <ImageView fitHeight="50.0" fitWidth="181.13" layoutX="20.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../../../../java/imagens/iflogo.png" />
+            </image>
+        </ImageView>
+        <Button fx:id="sairSobre" graphicTextGap="0.0" layoutX="550.0" layoutY="23.0" mnemonicParsing="false" text="Sair" textAlignment="CENTER" textOverrun="CLIP">
+            <font>
+                <Font name="Segoe UI" size="12.800000190734863" />
+            </font>
+        </Button>
+        <Button fx:id="ajudaSobre" layoutX="480.0" layoutY="23.0" mnemonicParsing="false" text="Ajuda" textAlignment="CENTER">
+            <font>
+                <Font name="Segoe UI" size="12.800000190734863" />
+            </font>
+        </Button>
+        <Text layoutX="87.0" layoutY="174.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut luctus, purus eget hendrerit scelerisque, enim felis pellentesque mi, vel convallis ante mi eu urna. In condimentum nulla et pulvinar euismod. Phasellus vitae tortor ex. Mauris et convallis justo. Morbi ullamcorper tellus vel dapibus pulvinar. Praesent lacinia tellus nibh, a cursus diam hendrerit sit amet. Sed feugiat at nisl et consequat. Duis euismod placerat molestie. Fusce efficitur diam eu imperdiet pharetra. Vestibulum quis elit ac arcu ornare congue ut eu odio. Cras nec augue et lacus sollicitudin sollicitudin. Duis sollicitudin malesuada volutpat. Morbi viverra lectus aliquet dolor tristique finibus. Cras non lorem pretium, tincidunt eros sit amet, posuere tortor. Integer placerat ipsum quis nulla blandit, nec consectetur lorem tincidunt. Curabitur sapien nulla, porta nec dolor eu, interdum facilisis orci." textAlignment="CENTER" wrappingWidth="456.8000793457031">
+            <font>
+                <Font name="Segoe UI" size="16.0" />
+            </font>
+        </Text>
+        <Text layoutX="225.0" layoutY="152.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sobre este programa:" textAlignment="CENTER">
+            <font>
+                <Font name="Segoe UI Bold" size="18.0" />
+            </font>
+        </Text>
+    </children>
+</AnchorPane>
