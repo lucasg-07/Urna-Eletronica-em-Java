@@ -15,78 +15,86 @@
                 <Image url="@../../../../java/imagens/iflogo.png" />
             </image>
         </ImageView>
-        <Button fx:id="ajuda" graphicTextGap="0.0" layoutX="560.0" layoutY="23.0" mnemonicParsing="false" text="Ajuda" textAlignment="CENTER" textOverrun="CLIP">
+        <Button fx:id="ajudaVotacao" graphicTextGap="0.0" layoutX="560.0" layoutY="23.0" mnemonicParsing="false" text="Ajuda" textAlignment="CENTER" textOverrun="CLIP">
             <font>
-                <Font name="Segoe UI" size="12.800000190734863" />
+                <Font name="Segoe UI" size="14.0" />
             </font>
         </Button>
-      <ButtonBar layoutX="336.0" layoutY="360.0" prefHeight="40.0" prefWidth="200.0" />
-      <Rectangle arcWidth="5.0" fill="#d9d9d9" height="385.0" layoutX="20.0" layoutY="114.0" smooth="false" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="280.0" />
-      <Rectangle fill="#d9d9d9" height="385.0" layoutX="329.0" layoutY="114.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="280.0" />
-      <Button layoutX="354.0" layoutY="131.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" text="1">
-         <font>
-            <Font name="Segoe UI Bold" size="25.0" />
-         </font></Button>
-      <Button layoutX="444.0" layoutY="131.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" text="2">
-         <font>
-            <Font name="Segoe UI Bold" size="25.0" />
-         </font></Button>
-      <Button layoutX="534.0" layoutY="131.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" text="3">
-         <font>
-            <Font name="Segoe UI Bold" size="25.0" />
-         </font></Button>
-      <Button layoutX="354.0" layoutY="206.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" text="4">
-         <font>
-            <Font name="Segoe UI Bold" size="25.0" />
-         </font></Button>
-      <Button layoutX="444.0" layoutY="206.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" text="5">
-         <font>
-            <Font name="Segoe UI Bold" size="25.0" />
-         </font></Button>
-      <Button layoutX="534.0" layoutY="206.0" maxWidth="50.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" text="6">
-         <font>
-            <Font name="Segoe UI Bold" size="25.0" />
-         </font></Button>
-      <Button layoutX="354.0" layoutY="282.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" text="7">
-         <font>
-            <Font name="Segoe UI Bold" size="25.0" />
-         </font></Button>
-      <Button layoutX="444.0" layoutY="282.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" text="8">
-         <font>
-            <Font name="Segoe UI Bold" size="25.0" />
-         </font></Button>
-      <Button layoutX="534.0" layoutY="282.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" text="9">
-         <font>
-            <Font name="Segoe UI Bold" size="25.0" />
-         </font></Button>
-      <Button layoutX="337.0" layoutY="442.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="85.0" text="BRANCO">
-         <font>
-            <Font name="Segoe UI Bold" size="12.0" />
-         </font></Button>
-      <Button layoutX="444.0" layoutY="358.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" text="0">
-         <font>
-            <Font name="Segoe UI Bold" size="25.0" />
-         </font></Button>
-      <Button layoutX="517.0" layoutY="442.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="85.0" text="CONFIRMA">
-         <font>
-            <Font name="Segoe UI Bold" size="12.0" />
-         </font></Button>
-      <ImageView fitHeight="180.0" fitWidth="135.0" layoutX="93.0" layoutY="141.0" pickOnBounds="true" preserveRatio="true" />
-      <Label layoutX="88.0" layoutY="346.0" prefHeight="23.0" prefWidth="143.0" text="CHAPA: LOREM IPSUM">
-         <font>
-            <Font name="Segoe UI" size="14.0" />
-         </font></Label>
-      <Button layoutX="427.0" layoutY="442.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="85.0" text="CORRIGE">
-         <font>
-            <Font name="Segoe UI Bold" size="12.0" />
-         </font></Button>
-      <Label layoutX="76.0" layoutY="371.0" prefHeight="23.0" prefWidth="174.0" text="PRESIDENTE: LOREM IPSUM">
-         <font>
-            <Font name="Segoe UI" size="14.0" />
-         </font></Label>
-      <Label layoutX="100.0" layoutY="396.0" prefHeight="23.0" prefWidth="126.0" text="VICE: LOREM IPSUM">
-         <font>
-            <Font name="Segoe UI" size="14.0" />
-         </font></Label>
+        <ButtonBar layoutX="336.0" layoutY="360.0" prefHeight="40.0" prefWidth="200.0" />
+        <Rectangle arcWidth="5.0" fill="#d9d9d9" height="385.0" layoutX="20.0" layoutY="114.0" smooth="false" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="280.0" />
+        <Rectangle fill="#d9d9d9" height="385.0" layoutX="329.0" layoutY="114.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="280.0" />
+        <Button fx:id="tecla1" layoutX="354.0" layoutY="131.0" mnemonicParsing="false" onAction="#handletecla1" prefHeight="50.0" prefWidth="50.0" text="1">
+            <font>
+                <Font name="Segoe UI Bold" size="25.0" />
+            </font></Button>
+        <Button fx:id="tecla2" layoutX="444.0" layoutY="131.0" mnemonicParsing="false" onAction="#handletecla2" prefHeight="50.0" prefWidth="50.0" text="2">
+            <font>
+                <Font name="Segoe UI Bold" size="25.0" />
+            </font></Button>
+        <Button fx:id="tecla3" layoutX="534.0" layoutY="131.0" mnemonicParsing="false" onAction="#handletecla3" prefHeight="50.0" prefWidth="50.0" text="3">
+            <font>
+                <Font name="Segoe UI Bold" size="25.0" />
+            </font></Button>
+        <Button fx:id="tecla4" layoutX="354.0" layoutY="206.0" mnemonicParsing="false" onAction="#handletecla4" prefHeight="50.0" prefWidth="50.0" text="4">
+            <font>
+                <Font name="Segoe UI Bold" size="25.0" />
+            </font></Button>
+        <Button fx:id="tecla5" layoutX="444.0" layoutY="206.0" mnemonicParsing="false" onAction="#handletecla5" prefHeight="50.0" prefWidth="50.0" text="5">
+            <font>
+                <Font name="Segoe UI Bold" size="25.0" />
+            </font></Button>
+        <Button fx:id="tecla6" layoutX="534.0" layoutY="206.0" maxWidth="50.0" mnemonicParsing="false" onAction="#handletecla6" prefHeight="50.0" prefWidth="50.0" text="6">
+            <font>
+                <Font name="Segoe UI Bold" size="25.0" />
+            </font></Button>
+        <Button fx:id="tecla7" layoutX="354.0" layoutY="282.0" mnemonicParsing="false" onAction="#handletecla7" prefHeight="50.0" prefWidth="50.0" text="7">
+            <font>
+                <Font name="Segoe UI Bold" size="25.0" />
+            </font></Button>
+        <Button fx:id="tecla8" layoutX="444.0" layoutY="282.0" mnemonicParsing="false" onAction="#handletecla8" prefHeight="50.0" prefWidth="50.0" text="8">
+            <font>
+                <Font name="Segoe UI Bold" size="25.0" />
+            </font></Button>
+        <Button fx:id="tecla9" layoutX="534.0" layoutY="282.0" mnemonicParsing="false" onAction="#handletecla9" prefHeight="50.0" prefWidth="50.0" text="9">
+            <font>
+                <Font name="Segoe UI Bold" size="25.0" />
+            </font></Button>
+        <Button fx:id="teclaBranco" layoutX="337.0" layoutY="442.0" mnemonicParsing="false" onAction="#handleBranco" prefHeight="40.0" prefWidth="85.0" text="BRANCO">
+            <font>
+                <Font name="Segoe UI Bold" size="12.0" />
+            </font></Button>
+        <Button fx:id="tecla0" layoutX="444.0" layoutY="358.0" mnemonicParsing="false" onAction="#handletecla0" prefHeight="50.0" prefWidth="50.0" text="0">
+            <font>
+                <Font name="Segoe UI Bold" size="25.0" />
+            </font></Button>
+        <Button fx:id="teclaConfirma" layoutX="517.0" layoutY="442.0" mnemonicParsing="false" onAction="#handleConfirma" prefHeight="40.0" prefWidth="85.0" text="CONFIRMA">
+            <font>
+                <Font name="Segoe UI Bold" size="12.0" />
+            </font></Button>
+        <ImageView fx:id="foto" fitHeight="180.0" fitWidth="135.0" layoutX="96.0" layoutY="164.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../../../../../../../../Downloads/default-placeholder-profile-icon-vector-14065284.jpg" />
+            </image></ImageView>
+        <Label fx:id="chapa" layoutX="88.0" layoutY="320.0" prefHeight="23.0" prefWidth="143.0" text="CHAPA: LOREM IPSUM">
+            <font>
+                <Font name="Segoe UI" size="14.0" />
+            </font></Label>
+        <Button fx:id="teclaCorrige" layoutX="427.0" layoutY="442.0" mnemonicParsing="false" onAction="#handleCorrige" prefHeight="40.0" prefWidth="85.0" text="CORRIGE">
+            <font>
+                <Font name="Segoe UI Bold" size="12.0" />
+            </font></Button>
+        <Label fx:id="presidente" layoutX="73.0" layoutY="344.0" prefHeight="23.0" prefWidth="174.0" text="PRESIDENTE: LOREM IPSUM">
+            <font>
+                <Font name="Segoe UI" size="14.0" />
+            </font></Label>
+        <Label fx:id="vice" layoutX="96.0" layoutY="368.0" prefHeight="23.0" prefWidth="126.0" text="VICE: LOREM IPSUM">
+            <font>
+                <Font name="Segoe UI" size="14.0" />
+            </font></Label>
+        <Label fx:id="resultado" layoutX="134.0" layoutY="412.0" prefHeight="50.0" prefWidth="58.0" style="-fx-background-color: 000000;" text=".">
+            <font>
+                <Font name="Segoe UI Bold" size="24.0" />
+            </font>
+        </Label>
     </children>
 </AnchorPane>

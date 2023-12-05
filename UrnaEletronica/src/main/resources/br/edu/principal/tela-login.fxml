@@ -11,10 +11,11 @@
         <Rectangle arcWidth="5.0" fill="WHITE" height="473.0" layoutY="70.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="630.0" />
         <TextField fx:id="matriculaLogin" layoutX="202.0" layoutY="252.0" prefHeight="40.0" prefWidth="235.0" text="Matrícula/SIAPE" />
         <TextField fx:id="senhaLogin" layoutX="202.0" layoutY="307.0" prefHeight="40.0" prefWidth="235.0" text="Senha" />
-        <Button fx:id="cadastrarLogin" layoutX="156.0" layoutY="381.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="320.0" text="Cadastrar">
+        <Button fx:id="cadastrarLogin" onAction="#handleCadastrar" layoutX="156.0" layoutY="381.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="320.0" text="Cadastrar">
             <font>
                 <Font name="Segoe UI" size="12.800000190734863" />
-            </font></Button>
+            </font>
+        </Button>
         <Text layoutX="211.0" layoutY="212.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bem Vindo(a)!" textAlignment="CENTER" wrappingWidth="216.84376525878906">
             <font>
                 <Font name="Segoe UI Bold" size="32.0" />
