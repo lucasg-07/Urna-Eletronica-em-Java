@@ -1,44 +1,84 @@
 package br.edu.principal;
 
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
 import javafx.event.ActionEvent;
 import java.io.IOException;
+// Importações omitidas por brevidade
 
 public class TelaLogin {
 
-    @FXML
-    private TextField matriculaLogin;
-
-    @FXML
-    private TextField senhaLogin;
+    // Adicione constantes para mensagens
+    private static final String AUTHENTICATION_FAILURE_MSG = "Falha na autenticação. Verifique as credenciais.";
 
     @FXML
     private Button cadastrarLogin;
 
     @FXML
+    private TextField usernameField;
+    @FXML
+    private PasswordField passwordField;
+
+    @FXML
+    private Label unvalidLogin;
+
+    @FXML
     private void handleCadastrar(ActionEvent click) {
-        // Carregar a nova tela
+        String username = this.usernameField.getText();
+        String password = this.passwordField.getText();
+
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("tela-votacao.fxml"));
-            Parent root = loader.load();
-            Scene scene = new Scene(root);
-            Stage stage = new Stage();
-            stage.setScene(scene);
-            stage.setTitle("Votação");
+            if (this.authenticate(username, password)) {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("tela-votacao.fxml"));
+                Parent root = loader.load();
+                Scene scene = new Scene(root);
+                Stage stage = new Stage();
+                stage.setScene(scene);
+                stage.setTitle("Votação");
 
-            Stage loginStage = (Stage) cadastrarLogin.getScene().getWindow();
-            loginStage.close();
+                Stage loginStage = (Stage) cadastrarLogin.getScene().getWindow();
+                loginStage.close();
 
-            stage.show();
+                stage.show();
+            } else {
+                this.unvalidLogin.setText(AUTHENTICATION_FAILURE_MSG);
+            }
         } catch (IOException e) {
+            // Trate a exceção adequadamente (mostre uma mensagem ao usuário ou registre-a)
             e.printStackTrace();
+        }
+    }
+
+    private boolean authenticate(String username, String password) {
+        String jdbcUrl = "jdbc:mysql://localhost:3306/urna_base";
+        String dbUser = "usuario1";
+        String dbPassword = "senha1";
+        String query = "SELECT * FROM usuarios WHERE username = ? AND password = ?";
+
+        try (Connection conn = DriverManager.getConnection(jdbcUrl, dbUser, dbPassword);
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+
+            stmt.setString(1, username);
+            stmt.setString(2, password);
+
+            try (ResultSet rs = stmt.executeQuery()) {
+                return rs.next();
+            }
+
+        } catch (SQLException e) {
+            // Trate a exceção adequadamente (mostre uma mensagem ao usuário ou registre-a)
+            e.printStackTrace();
+            return false;
         }
     }
 }
