@@ -59,17 +59,17 @@ public class TelaLogin {
         }
     }
 
-    private boolean authenticate(String username, String password) {
-        String jdbcUrl = "jdbc:mysql://localhost:3306/urna_base";
-        String dbUser = "usuario1";
-        String dbPassword = "senha1";
-        String query = "SELECT * FROM usuarios WHERE username = ? AND password = ?";
+    private boolean authenticate(String usuario, String senha) {
+        String jdbcUrl = "jdbc:mysql://localhost:3306/students";
+        String dbUser = "root";
+        String dbPassword = "";
+        String query = "SELECT * FROM usuarios WHERE usuario = ? AND senha = ?";
 
         try (Connection conn = DriverManager.getConnection(jdbcUrl, dbUser, dbPassword);
              PreparedStatement stmt = conn.prepareStatement(query)) {
 
-            stmt.setString(1, username);
-            stmt.setString(2, password);
+            stmt.setString(1, usuario);
+            stmt.setString(2, senha);
 
             try (ResultSet rs = stmt.executeQuery()) {
                 return rs.next();
