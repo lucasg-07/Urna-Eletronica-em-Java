@@ -22,7 +22,7 @@ public class TelaLogin {
     private static final String AUTHENTICATION_FAILURE_MSG = "Falha na autenticação. Verifique as credenciais.";
 
     @FXML
-    private Button cadastrarLogin;
+    private Button entrarLogin;
 
     @FXML
     private TextField usernameField;
@@ -33,7 +33,30 @@ public class TelaLogin {
     private Label unvalidLogin;
 
     @FXML
-    private void handleCadastrar(ActionEvent click) {
+    private Hyperlink linkCadastro;
+
+
+    @FXML
+    private void handleCadastro(ActionEvent click)  {
+        try{
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("tela-cadastro.fxml"));
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.setTitle("Cadastro");
+
+        Stage loginStage = (Stage) linkCadastro.getScene().getWindow();
+        loginStage.close();
+
+        stage.show();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void handleEntrar(ActionEvent click) {
         String username = this.usernameField.getText();
         String password = this.passwordField.getText();
 
@@ -46,7 +69,7 @@ public class TelaLogin {
                 stage.setScene(scene);
                 stage.setTitle("Votação");
 
-                Stage loginStage = (Stage) cadastrarLogin.getScene().getWindow();
+                Stage loginStage = (Stage) entrarLogin.getScene().getWindow();
                 loginStage.close();
 
                 stage.show();

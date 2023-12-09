@@ -9,10 +9,9 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="543.0" prefWidth="630.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.principal.TelaLogin">
     <children>
         <Rectangle arcWidth="5.0" fill="WHITE" height="473.0" layoutY="70.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="630.0" />
-        <TextField fx:id="usernameField" layoutX="202.0" layoutY="252.0" prefHeight="40.0" prefWidth="235.0" text="Matrícula/SIAPE" />
-        <PasswordField fx:id="passwordField" layoutX="202.0" layoutY="307.0" prefHeight="40.0" prefWidth="235.0" text="Senha" />
-
-        <Button fx:id="cadastrarLogin" layoutX="156.0" layoutY="381.0" mnemonicParsing="false" onAction="#handleCadastrar" prefHeight="60.0" prefWidth="320.0" text="Cadastrar">
+        <TextField fx:id="usernameField" layoutX="202.0" layoutY="250.0" prefHeight="40.0" prefWidth="235.0" promptText="Matrícula/SIAPE" />
+        <PasswordField fx:id="passwordField" layoutX="202.0" layoutY="310.0" prefHeight="40.0" prefWidth="235.0" promptText="Senha" />
+        <Button fx:id="entrarLogin" layoutX="156.0" layoutY="381.0" mnemonicParsing="false" onAction="#handleEntrar" prefHeight="60.0" prefWidth="320.0" text="Entrar">
             <font>
                 <Font name="Segoe UI" size="12.800000190734863" />
             </font>
@@ -39,5 +38,7 @@
             </font>
         </Button>
         <Label fx:id="unvalidLogin" layoutX="191.0" layoutY="477.0" />
+      <Hyperlink fx:id="linkCadastro" layoutX="226.0" layoutY="357.0" text="Não possui cadastro? Clique aqui!" onAction="#handleCadastro" />
+
     </children>
 </AnchorPane>
