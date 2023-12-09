@@ -25,7 +25,7 @@ public class TelaVotacao {
     private ImageView foto;
 
     @FXML
-    private void handletecla1() {
+    private void handleTecla1() {
         System.out.print("Pressionado");
         if(resultado.getText().equals(".")) {
             resultado.setText("");
@@ -34,7 +34,7 @@ public class TelaVotacao {
     }
 
     @FXML
-    private void handletecla2() {
+    private void handleTecla2() {
         System.out.print("Pressionado");
         if(resultado.getText().equals(".")) {
             resultado.setText("");
@@ -43,7 +43,7 @@ public class TelaVotacao {
     }
 
     @FXML
-    private void handletecla3() {
+    private void handleTecla3() {
         System.out.print("Pressionado");
         if(resultado.getText().equals(".")) {
             resultado.setText("");
@@ -52,7 +52,7 @@ public class TelaVotacao {
     }
 
     @FXML
-    private void handletecla4() {
+    private void handleTecla4() {
         System.out.print("Pressionado");
         if(resultado.getText().equals(".")) {
             resultado.setText("");
@@ -61,7 +61,7 @@ public class TelaVotacao {
     }
 
     @FXML
-    private void handletecla5() {
+    private void handleTecla5() {
         System.out.print("Pressionado");
         if(resultado.getText().equals(".")) {
             resultado.setText("");
@@ -70,7 +70,7 @@ public class TelaVotacao {
     }
 
     @FXML
-    private void handletecla6() {
+    private void handleTecla6() {
         System.out.print("Pressionado");
         if(resultado.getText().equals(".")) {
             resultado.setText("");
@@ -79,7 +79,7 @@ public class TelaVotacao {
     }
 
     @FXML
-    private void handletecla7() {
+    private void handleTecla7() {
         System.out.print("Pressionado");
         if(resultado.getText().equals(".")) {
             resultado.setText("");
@@ -88,7 +88,7 @@ public class TelaVotacao {
     }
 
     @FXML
-    private void handletecla8() {
+    private void handleTecla8() {
         System.out.print("Pressionado");
         if(resultado.getText().equals(".")) {
             resultado.setText("");
@@ -97,7 +97,7 @@ public class TelaVotacao {
     }
 
     @FXML
-    private void handletecla9() {
+    private void handleTecla9() {
         System.out.print("Pressionado");
         if(resultado.getText().equals(".")) {
             resultado.setText("");
@@ -106,7 +106,7 @@ public class TelaVotacao {
     }
 
     @FXML
-    private void handletecla0() {
+    private void handleTecla0() {
         System.out.print("Pressionado");
         if(resultado.getText().equals(".")) {
             resultado.setText("");
