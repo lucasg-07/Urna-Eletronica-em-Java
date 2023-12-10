@@ -22,10 +22,9 @@
             </font>
         </Text>
         <Rectangle arcWidth="5.0" fill="#135000" height="70.0" smooth="false" stroke="BLACK" strokeMiterLimit="0.0" strokeType="INSIDE" strokeWidth="0.0" width="631.0" />
-        <ImageView fitHeight="50.0" fitWidth="181.13" layoutX="20.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@../../../../java/imagens/iflogo.png" />
-            </image>
+        <ImageView fitHeight="50.0" fitWidth="181.13" layoutX="20.0" layoutY="10.0" pickOnBounds="true"
+                   preserveRatio="true">
+            <Image url="@../../../../java/imagens/iflogo.png"/>
         </ImageView>
         <Button fx:id="ajudaLogin" graphicTextGap="0.0" layoutX="550.0" layoutY="23.0" mnemonicParsing="false" text="Ajuda" textAlignment="CENTER" textOverrun="CLIP">
             <font>
