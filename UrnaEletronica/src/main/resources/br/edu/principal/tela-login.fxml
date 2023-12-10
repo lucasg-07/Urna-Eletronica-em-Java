@@ -1,22 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.PasswordField?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.shape.Rectangle?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="543.0" prefWidth="630.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.principal.TelaLogin">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="543.0" prefWidth="630.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.principal.TelaLogin">
     <children>
         <Rectangle arcWidth="5.0" fill="WHITE" height="473.0" layoutY="70.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="630.0" />
         <TextField fx:id="usernameField" layoutX="202.0" layoutY="250.0" prefHeight="40.0" prefWidth="235.0" promptText="Matrícula/SIAPE" />
-
-        <Button fx:id="cadastrarLogin" layoutX="156.0" layoutY="381.0" mnemonicParsing="false" onAction="#handleCadastrar" prefHeight="60.0" prefWidth="320.0" text="Cadastrar">
+        <PasswordField fx:id="passwordField" layoutX="202.0" layoutY="310.0" prefHeight="40.0" prefWidth="235.0" promptText="Senha" />
+        <Button fx:id="entrarLogin" layoutX="156.0" layoutY="381.0" mnemonicParsing="false" onAction="#handleEntrar" prefHeight="60.0" prefWidth="320.0" text="Entrar">
             <font>
                 <Font name="Segoe UI" size="12.800000190734863" />
             </font>
@@ -27,10 +22,9 @@
             </font>
         </Text>
         <Rectangle arcWidth="5.0" fill="#135000" height="70.0" smooth="false" stroke="BLACK" strokeMiterLimit="0.0" strokeType="INSIDE" strokeWidth="0.0" width="631.0" />
-        <ImageView fitHeight="50.0" fitWidth="181.13" layoutX="20.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@../../../../java/imagens/iflogo.png" />
-            </image>
+        <ImageView fitHeight="50.0" fitWidth="181.13" layoutX="20.0" layoutY="10.0" pickOnBounds="true"
+                   preserveRatio="true">
+            <Image url="@../../../../java/imagens/iflogo.png"/>
         </ImageView>
         <Button fx:id="ajudaLogin" graphicTextGap="0.0" layoutX="550.0" layoutY="23.0" mnemonicParsing="false" text="Ajuda" textAlignment="CENTER" textOverrun="CLIP">
             <font>
@@ -42,7 +36,8 @@
                 <Font name="Segoe UI" size="12.800000190734863" />
             </font>
         </Button>
-      <Label fx:id="unvalidLogin" layoutX="191.0" layoutY="477.0" />
-      <PasswordField layoutX="202.0" layoutY="310.0" prefHeight="40.0" prefWidth="235.0" promptText="Senha" />
+        <Label fx:id="unvalidLogin" layoutX="191.0" layoutY="477.0" />
+      <Hyperlink fx:id="linkCadastro" layoutX="226.0" layoutY="357.0" text="Não possui cadastro? Clique aqui!" onAction="#handleCadastro" />
+
     </children>
 </AnchorPane>

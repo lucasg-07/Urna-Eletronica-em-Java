@@ -22,7 +22,7 @@ public class TelaLogin {
     private static final String AUTHENTICATION_FAILURE_MSG = "Falha na autenticação. Verifique as credenciais.";
 
     @FXML
-    private Button cadastrarLogin;
+    private Button entrarLogin;
 
     @FXML
     private TextField usernameField;
@@ -33,7 +33,30 @@ public class TelaLogin {
     private Label unvalidLogin;
 
     @FXML
-    private void handleCadastrar(ActionEvent click) {
+    private Hyperlink linkCadastro;
+
+
+    @FXML
+    private void handleCadastro(ActionEvent click)  {
+        try{
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("tela-cadastro.fxml"));
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.setTitle("Cadastro");
+
+        Stage loginStage = (Stage) linkCadastro.getScene().getWindow();
+        loginStage.close();
+
+        stage.show();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void handleEntrar(ActionEvent click) {
         String username = this.usernameField.getText();
         String password = this.passwordField.getText();
 
@@ -46,7 +69,7 @@ public class TelaLogin {
                 stage.setScene(scene);
                 stage.setTitle("Votação");
 
-                Stage loginStage = (Stage) cadastrarLogin.getScene().getWindow();
+                Stage loginStage = (Stage) entrarLogin.getScene().getWindow();
                 loginStage.close();
 
                 stage.show();
@@ -59,17 +82,17 @@ public class TelaLogin {
         }
     }
 
-    private boolean authenticate(String username, String password) {
-        String jdbcUrl = "jdbc:mysql://localhost:3306/urna_base";
-        String dbUser = "usuario1";
-        String dbPassword = "senha1";
-        String query = "SELECT * FROM usuarios WHERE username = ? AND password = ?";
+    private boolean authenticate(String usuario, String senha) {
+        String jdbcUrl = "jdbc:mysql://localhost:3306/students";
+        String dbUser = "root";
+        String dbPassword = "";
+        String query = "SELECT * FROM usuarios WHERE usuario = ? AND senha = ?";
 
         try (Connection conn = DriverManager.getConnection(jdbcUrl, dbUser, dbPassword);
              PreparedStatement stmt = conn.prepareStatement(query)) {
 
-            stmt.setString(1, username);
-            stmt.setString(2, password);
+            stmt.setString(1, usuario);
+            stmt.setString(2, senha);
 
             try (ResultSet rs = stmt.executeQuery()) {
                 return rs.next();
