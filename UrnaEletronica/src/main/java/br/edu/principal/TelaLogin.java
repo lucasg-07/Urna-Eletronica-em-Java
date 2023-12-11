@@ -35,6 +35,46 @@ public class TelaLogin {
     @FXML
     private Hyperlink linkCadastro;
 
+    @FXML
+    private TextField newPasswordTextField;
+
+    @FXML
+    private CheckBox showPasswordCheckBox;
+
+    private void togglePasswordField(boolean usePasswordField) {
+        if (usePasswordField) {
+            // Se usePasswordField for true, configura o campo como PasswordField
+            newPasswordTextField.setVisible(false);
+            passwordField.setVisible(true);
+            passwordField.setText(newPasswordTextField.getText());
+        } else {
+            // Se usePasswordField for false, configura o campo como TextField
+            passwordField.setVisible(false);
+            newPasswordTextField.setVisible(true);
+            newPasswordTextField.setText(passwordField.getText());
+        }
+    }
+
+    @FXML
+    private void initialize() {
+        // Adiciona um listener ao CheckBox para detectar alterações de estado
+        showPasswordCheckBox.selectedProperty().addListener((observable, oldValue, newValue) -> {
+            // Chama o método para alternar entre PasswordField e TextField
+            togglePasswordField(!newValue);
+        });
+    }
+
+    @FXML
+    private void handleShowPassword(ActionEvent click) {
+        String password = passwordField.getText();
+
+        if (showPasswordCheckBox.isSelected()) {
+            // Se o CheckBox estiver marcado, mostra a senha como TextField
+            newPasswordTextField.setText(password);
+        } else {
+            newPasswordTextField.setText("");
+        }
+    }
 
     @FXML
     private void handleCadastro(ActionEvent click)  {

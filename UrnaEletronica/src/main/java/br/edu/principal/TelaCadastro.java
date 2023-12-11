@@ -5,10 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -20,37 +17,85 @@ public class TelaCadastro {
     @FXML
     private TextField newRegistration;
     @FXML
+    private TextField newPasswordTextField;
+    @FXML
     private TextField newName;
     @FXML
     private Button newRegister;
+    @FXML
+    private Label unvalidRegister;
+    @FXML
+    private CheckBox showPasswordCheckBox;
 
 
+    private void togglePasswordField(boolean usePasswordField) {
+        if (usePasswordField) {
+            // Se usePasswordField for true, configura o campo como PasswordField
+            newPasswordTextField.setVisible(false);
+            newPassword.setVisible(true);
+            newPassword.setText(newPasswordTextField.getText());
+        } else {
+            // Se usePasswordField for false, configura o campo como TextField
+            newPassword.setVisible(false);
+            newPasswordTextField.setVisible(true);
+            newPasswordTextField.setText(newPassword.getText());
+        }
+    }
+
+    @FXML
+    private void initialize() {
+        // Adiciona um listener ao CheckBox para detectar alterações de estado
+        showPasswordCheckBox.selectedProperty().addListener((observable, oldValue, newValue) -> {
+            // Chama o método para alternar entre PasswordField e TextField
+            togglePasswordField(!newValue);
+        });
+    }
+
+    @FXML
+    private void handleShowPassword(ActionEvent click) {
+        String password = newPassword.getText();
+
+        if (showPasswordCheckBox.isSelected()) {
+            // Se o CheckBox estiver marcado, mostra a senha como TextField
+            newPasswordTextField.setText(password);
+        } else {
+            newPasswordTextField.setText("");
+        }
+    }
     @FXML
     private void handleCadastrar(ActionEvent click){
         String name = this.newName.getText();
-        String registration = this.newRegistration.getText();
         String password = this.newPassword.getText();
+        String registration = this.newRegistration.getText();
 
-        try {
-            if (this.createNewUser(name,registration,password)) {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("tela-login.fxml"));
-                Parent root = loader.load();
-                Scene scene = new Scene(root);
-                Stage stage = new Stage();
-                stage.setScene(scene);
-                stage.setTitle("Votação");
+        boolean shouldCreate = checkNewUser(name,password,registration);
 
-                Stage loginStage = (Stage) newRegister.getScene().getWindow();
-                loginStage.close();
+        if(shouldCreate){
+            try {
+                if (this.createNewUser(name,password,registration)) {
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("tela-login.fxml"));
+                    Parent root = loader.load();
+                    Scene scene = new Scene(root);
+                    Stage stage = new Stage();
+                    stage.setScene(scene);
+                    stage.setTitle("Votação");
 
-                stage.show();
-            } else {
-                System.out.println("Erro");
+                    Stage loginStage = (Stage) newRegister.getScene().getWindow();
+                    loginStage.close();
+
+                    stage.show();
+                } else {
+                    System.out.println("Erro");
+                }
+            } catch (IOException e) {
+                // Trate a exceção adequadamente (mostre uma mensagem ao usuário ou registre-a)
+                e.printStackTrace();
             }
-        } catch (IOException e) {
-            // Trate a exceção adequadamente (mostre uma mensagem ao usuário ou registre-a)
-            e.printStackTrace();
         }
+        else {
+            this.unvalidRegister.setText("* Nenhum campo deve estar vazio!");
+        }
+
     }
 
 
@@ -65,9 +110,9 @@ public class TelaCadastro {
         try (Connection conn = DriverManager.getConnection(jdbcUrl, dbUser, dbPassword);
              PreparedStatement stmt = conn.prepareStatement(query)) {
 
-            stmt.setString(1, name);
+            stmt.setString(1, registration);
             stmt.setString(2, password);
-            stmt.setString(3, registration);
+            stmt.setString(3, name);
 
             int rowsAffected = stmt.executeUpdate();
 
@@ -79,6 +124,9 @@ public class TelaCadastro {
             e.printStackTrace();
             return false;
         }
+    }
+    private boolean checkNewUser(String name, String password, String registration){
+      return !name.trim().isEmpty() && !password.isEmpty() && !registration.trim().isEmpty();
     }
 
 }
