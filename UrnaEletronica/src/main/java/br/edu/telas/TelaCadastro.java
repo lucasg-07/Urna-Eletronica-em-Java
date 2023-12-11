@@ -1,4 +1,4 @@
-package br.edu.principal;
+package br.edu.telas;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

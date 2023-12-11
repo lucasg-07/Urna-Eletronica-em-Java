@@ -6,7 +6,7 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="543.0" prefWidth="630.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.principal.TelaVotacao">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="543.0" prefWidth="630.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.telas.TelaVotacao">
     <children>
         <Rectangle arcWidth="5.0" fill="WHITE" height="473.0" layoutY="70.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="630.0" />
         <Rectangle arcWidth="5.0" fill="#135000" height="70.0" smooth="false" stroke="BLACK" strokeMiterLimit="0.0" strokeType="INSIDE" strokeWidth="0.0" width="631.0" />
@@ -23,39 +23,39 @@
         <ButtonBar layoutX="336.0" layoutY="360.0" prefHeight="40.0" prefWidth="200.0" />
         <Rectangle arcWidth="5.0" fill="#d9d9d9" height="385.0" layoutX="20.0" layoutY="114.0" smooth="false" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="280.0" />
         <Rectangle fill="#d9d9d9" height="385.0" layoutX="329.0" layoutY="114.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="280.0" />
-        <Button fx:id="tecla1" layoutX="354.0" layoutY="131.0" mnemonicParsing="false" onAction="#handleTecla1" prefHeight="50.0" prefWidth="50.0" text="1">
+        <Button fx:id="tecla1" layoutX="354.0" layoutY="131.0" mnemonicParsing="false" onAction="#handleTeclaNumerica" prefHeight="50.0" prefWidth="50.0" text="1">
             <font>
                 <Font name="Segoe UI Bold" size="25.0" />
             </font></Button>
-        <Button fx:id="tecla2" layoutX="444.0" layoutY="131.0" mnemonicParsing="false" onAction="#handleTecla2" prefHeight="50.0" prefWidth="50.0" text="2">
+        <Button fx:id="tecla2" layoutX="444.0" layoutY="131.0" mnemonicParsing="false" onAction="#handleTeclaNumerica" prefHeight="50.0" prefWidth="50.0" text="2">
             <font>
                 <Font name="Segoe UI Bold" size="25.0" />
             </font></Button>
-        <Button fx:id="tecla3" layoutX="534.0" layoutY="131.0" mnemonicParsing="false" onAction="#handleTecla3" prefHeight="50.0" prefWidth="50.0" text="3">
+        <Button fx:id="tecla3" layoutX="534.0" layoutY="131.0" mnemonicParsing="false" onAction="#handleTeclaNumerica" prefHeight="50.0" prefWidth="50.0" text="3">
             <font>
                 <Font name="Segoe UI Bold" size="25.0" />
             </font></Button>
-        <Button fx:id="tecla4" layoutX="354.0" layoutY="206.0" mnemonicParsing="false" onAction="#handleTecla4" prefHeight="50.0" prefWidth="50.0" text="4">
+        <Button fx:id="tecla4" layoutX="354.0" layoutY="206.0" mnemonicParsing="false" onAction="#handleTeclaNumerica" prefHeight="50.0" prefWidth="50.0" text="4">
             <font>
                 <Font name="Segoe UI Bold" size="25.0" />
             </font></Button>
-        <Button fx:id="tecla5" layoutX="444.0" layoutY="206.0" mnemonicParsing="false" onAction="#handleTecla5" prefHeight="50.0" prefWidth="50.0" text="5">
+        <Button fx:id="tecla5" layoutX="444.0" layoutY="206.0" mnemonicParsing="false" onAction="#handleTeclaNumerica" prefHeight="50.0" prefWidth="50.0" text="5">
             <font>
                 <Font name="Segoe UI Bold" size="25.0" />
             </font></Button>
-        <Button fx:id="tecla6" layoutX="534.0" layoutY="206.0" maxWidth="50.0" mnemonicParsing="false" onAction="#handleTecla6" prefHeight="50.0" prefWidth="50.0" text="6">
+        <Button fx:id="tecla6" layoutX="534.0" layoutY="206.0" maxWidth="50.0" mnemonicParsing="false" onAction="#handleTeclaNumerica" prefHeight="50.0" prefWidth="50.0" text="6">
             <font>
                 <Font name="Segoe UI Bold" size="25.0" />
             </font></Button>
-        <Button fx:id="tecla7" layoutX="354.0" layoutY="282.0" mnemonicParsing="false" onAction="#handleTecla7" prefHeight="50.0" prefWidth="50.0" text="7">
+        <Button fx:id="tecla7" layoutX="354.0" layoutY="282.0" mnemonicParsing="false" onAction="#handleTeclaNumerica" prefHeight="50.0" prefWidth="50.0" text="7">
             <font>
                 <Font name="Segoe UI Bold" size="25.0" />
             </font></Button>
-        <Button fx:id="tecla8" layoutX="444.0" layoutY="282.0" mnemonicParsing="false" onAction="#handleTecla8" prefHeight="50.0" prefWidth="50.0" text="8">
+        <Button fx:id="tecla8" layoutX="444.0" layoutY="282.0" mnemonicParsing="false" onAction="#handleTeclaNumerica" prefHeight="50.0" prefWidth="50.0" text="8">
             <font>
                 <Font name="Segoe UI Bold" size="25.0" />
             </font></Button>
-        <Button fx:id="tecla9" layoutX="534.0" layoutY="282.0" mnemonicParsing="false" onAction="#handleTecla9" prefHeight="50.0" prefWidth="50.0" text="9">
+        <Button fx:id="tecla9" layoutX="534.0" layoutY="282.0" mnemonicParsing="false" onAction="#handleTeclaNumerica" prefHeight="50.0" prefWidth="50.0" text="9">
             <font>
                 <Font name="Segoe UI Bold" size="25.0" />
             </font></Button>
@@ -63,7 +63,7 @@
             <font>
                 <Font name="Segoe UI Bold" size="12.0" />
             </font></Button>
-        <Button fx:id="tecla0" layoutX="444.0" layoutY="358.0" mnemonicParsing="false" onAction="#handleTecla0" prefHeight="50.0" prefWidth="50.0" text="0">
+        <Button fx:id="tecla0" layoutX="444.0" layoutY="358.0" mnemonicParsing="false" onAction="#handleTeclaNumerica" prefHeight="50.0" prefWidth="50.0" text="0">
             <font>
                 <Font name="Segoe UI Bold" size="25.0" />
             </font></Button>
@@ -91,7 +91,7 @@
             <font>
                 <Font name="Segoe UI" size="14.0" />
             </font></Label>
-        <Label fx:id="resultado" layoutX="134.0" layoutY="412.0" prefHeight="50.0" prefWidth="58.0" style="-fx-background-color: 000000;" >
+        <Label fx:id="resultado" layoutX="111.0" layoutY="408.0" prefHeight="50.0" prefWidth="126.0" style="-fx-background-color: 000000;">
             <font>
                 <Font name="Segoe UI Bold" size="24.0" />
             </font>
