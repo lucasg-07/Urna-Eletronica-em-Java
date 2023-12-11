@@ -27,8 +27,8 @@ public class TelaVotacao {
     @FXML
     private ImageView foto;
 
-    Candidato candidato1 = new Candidato("Luiz Inácio", "PT", "Taveira", 13);
-    Candidato candidato2 = new Candidato("Jair Bolsonaro", "PL", "Lucas G.", 22);
+    Candidato candidato1 = new Candidato("Luiz Inácio", "PT", "Taveira", "img/testeL", 13);
+    Candidato candidato2 = new Candidato("Jair Bolsonaro", "PL", "Lucas G.", "img/testeB", 22);
 
     Candidato[] listaDeCandidatos;
 
@@ -36,15 +36,40 @@ public class TelaVotacao {
         listaDeCandidatos = new Candidato[2];
     }
 
-    private Candidato encontrarCandidato(int numero) {
+    private void encontrarCandidato(int Numero, String Resultado) {
         listaDeCandidatos[0] = candidato1;
         listaDeCandidatos[1] = candidato2;
         for (Candidato candidato : listaDeCandidatos) {
-            if (candidato.getNumero() == numero) {
-                return candidato;
+            if (candidato.getNumero() == Numero) {
+                System.out.printf("O valor corresponde à %s\n", candidato.Nome);
+                chapa.setText("CHAPA: " + candidato.Chapa);
+                presidente.setText("PRESIDENTE: " + candidato.Nome);
+                vice.setText("VICE: " + candidato.Vice);
+                resultado.setText(Resultado);
+                break;
+            } else {
+                System.out.printf("O valor não corresponde à %s\n", candidato.Nome);
+                resultado.setText("NULO");
+                chapa.setText("");
+                presidente.setText("");
+                vice.setText("");
             }
         }
-        return null;  // Retorne null se o candidato não for encontrado
+    }
+
+    private void votarCandidato(int Numero) {
+        listaDeCandidatos[0] = candidato1;
+        listaDeCandidatos[1] = candidato2;
+        for (Candidato candidato : listaDeCandidatos) {
+            if (candidato.getNumero() == Numero) {
+                System.out.printf("Voto computado para %s\n", candidato.Nome);
+                candidato.Votos += 1;
+                System.out.printf("%s recebeu: %d votos\n", candidato.Nome, candidato.Votos);
+                break;
+            } else {
+                System.out.printf("%s recebeu: %d votos\n", candidato.Nome, candidato.Votos);
+            }
+        }
     }
 
 
@@ -66,21 +91,25 @@ public class TelaVotacao {
         if (resultado.getText().length() < 2) {
             // Adiciona o texto do botão ao texto existente em 'resultado'
             resultado.setText(resultado.getText() + button.getText());
-        } else {
-            int numvoto = Integer.parseInt(resultado.getText());
-
+            if (resultado.getText().length() == 2) {
+                System.out.printf("Por favor Funfa\n");
+                int numvoto = Integer.parseInt(resultado.getText());
+                System.out.printf("%d\n", numvoto);
+                encontrarCandidato(numvoto, resultado.getText());
+            }
         }
     }
-
-
 
     @FXML
     private void handleBranco() {
         // Imprime no console indicando que o usuário escolheu votar em branco
-        System.out.println("Voto branco");
+        System.out.println("Branco Pressionado");
 
         // Define o texto exibido no componente 'resultado' como "BRANCO"
         resultado.setText("BRANCO");
+        chapa.setText("");
+        presidente.setText("");
+        vice.setText("");
     }
 
 
@@ -88,10 +117,12 @@ public class TelaVotacao {
     @FXML
     private void handleCorrige() {
         // Imprime no console indicando que o usuário optou por corrigir a escolha de candidato
-        System.out.println("Outro candidato");
-
-        // Limpa o texto exibido no componente 'resultado'
+        System.out.println("Corrige Pressionado");
+        // Limpa o texto exibido nos componentes 'resultado', 'chapa', 'presidente', 'vice'
         resultado.setText("");
+        chapa.setText("CHAPA: ");
+        presidente.setText("PRESIDENTE: ");
+        vice.setText("VICE: ");
     }
 
 
@@ -99,7 +130,11 @@ public class TelaVotacao {
     @FXML
     private void handleConfirma() {
         // Imprime no console uma mensagem indicando a confirmação da escolha
-        System.out.println("Por favor funciona");
+        System.out.println("Confirma Pressionado");
+        // computar novos votos
+        int numvoto = Integer.parseInt(resultado.getText());
+        votarCandidato(numvoto);
+
     }
 
 
