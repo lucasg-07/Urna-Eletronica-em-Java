@@ -21,8 +21,8 @@ import java.util.List;
 public class TelaVotacao {
 
     @FXML
-    private Button Help;
-    
+    private Button confirma;
+
     @FXML
     private Label chapa;
 
@@ -107,25 +107,6 @@ public class TelaVotacao {
     }
 
     @FXML
-    private void HandleHelp() {
-        // Carregar a nova tela
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/br/edu/principal/tela-ajuda.fxml"));
-            Parent root = loader.load();
-            Scene scene = new Scene(root);
-            Stage stage = new Stage();
-            stage.setScene(scene);
-            stage.setTitle("Tela Ajuda");
-
-            Stage loginStage = (Stage) Help.getScene().getWindow();
-            loginStage.close();
-
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-    @FXML
     private void handleTeclaNumerica(ActionEvent event) {
         // Imprime "Pressionado" no console quando este método é chamado
         System.out.println("Pressionado");
@@ -163,7 +144,6 @@ public class TelaVotacao {
     }
 
 
-
     @FXML
     private void handleCorrige() {
         // Imprime no console indicando que o usuário optou por corrigir a escolha de candidato
@@ -176,7 +156,6 @@ public class TelaVotacao {
     }
 
 
-
     @FXML
     private void handleConfirma() {
         // Imprime no console uma mensagem indicando a confirmação da escolha
@@ -187,8 +166,20 @@ public class TelaVotacao {
             numvoto = Integer.parseInt(resultado.getText());
         }
         votarCandidato(numvoto, resultado.getText());
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/br/edu/principal/tela-fim.fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.setTitle("Voto Computado");
 
+            Stage loginStage = (Stage) confirma.getScene().getWindow();
+            loginStage.close();
+
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
-
-
 }

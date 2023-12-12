@@ -18,7 +18,7 @@
             <Font name="Segoe UI" size="12.800000190734863" />
          </font>
       </Button>
-      <Text layoutX="229.0" layoutY="177.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cadastre-se" textAlignment="CENTER" wrappingWidth="181.1300048828125">
+      <Text layoutX="216.0" layoutY="185.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cadastre-se" textAlignment="CENTER" wrappingWidth="197.1300048828125">
          <font>
             <Font name="Segoe UI Bold" size="32.0" />
          </font>

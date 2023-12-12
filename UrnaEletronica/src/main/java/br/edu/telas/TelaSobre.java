@@ -43,7 +43,7 @@ public class TelaSobre {
             Scene scene = new Scene(root);
             Stage stage = new Stage();
             stage.setScene(scene);
-            stage.setTitle("Login");
+            stage.setTitle("Ajuda");
 
             Stage loginStage = (Stage) ajudaSobre.getScene().getWindow();
             loginStage.close();
