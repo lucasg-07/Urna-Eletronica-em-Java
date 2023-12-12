@@ -68,7 +68,6 @@ public class TelaVotacao {
             resultado.setText(resultado.getText() + button.getText());
         } else {
             int numvoto = Integer.parseInt(resultado.getText());
-
         }
     }
 
