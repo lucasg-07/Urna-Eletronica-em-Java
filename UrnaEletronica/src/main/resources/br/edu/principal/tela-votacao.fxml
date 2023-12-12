@@ -18,47 +18,47 @@
         <ButtonBar layoutX="336.0" layoutY="360.0" prefHeight="40.0" prefWidth="200.0" />
         <Rectangle arcWidth="5.0" fill="#d9d9d9" height="385.0" layoutX="20.0" layoutY="114.0" smooth="false" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="280.0" />
         <Rectangle fill="#d9d9d9" height="385.0" layoutX="329.0" layoutY="114.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="280.0" />
-        <Button fx:id="tecla1" layoutX="354.0" layoutY="131.0" mnemonicParsing="false" onAction="#handleTeclaNumerica" prefHeight="50.0" prefWidth="50.0" text="1">
+        <Button fx:id="tecla1" layoutX="354.0" layoutY="131.0" mnemonicParsing="false" onAction="#handleTeclaNumerica" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: black;" text="1" textFill="WHITE">
             <font>
                 <Font name="Segoe UI Bold" size="25.0" />
             </font></Button>
-        <Button fx:id="tecla2" layoutX="444.0" layoutY="131.0" mnemonicParsing="false" onAction="#handleTeclaNumerica" prefHeight="50.0" prefWidth="50.0" text="2">
+        <Button fx:id="tecla2" layoutX="444.0" layoutY="131.0" mnemonicParsing="false" onAction="#handleTeclaNumerica" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: black;" text="2" textFill="WHITE">
             <font>
                 <Font name="Segoe UI Bold" size="25.0" />
             </font></Button>
-        <Button fx:id="tecla3" layoutX="534.0" layoutY="131.0" mnemonicParsing="false" onAction="#handleTeclaNumerica" prefHeight="50.0" prefWidth="50.0" text="3">
+        <Button fx:id="tecla3" layoutX="534.0" layoutY="131.0" mnemonicParsing="false" onAction="#handleTeclaNumerica" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: black;" text="3" textFill="WHITE">
             <font>
                 <Font name="Segoe UI Bold" size="25.0" />
             </font></Button>
-        <Button fx:id="tecla4" layoutX="354.0" layoutY="206.0" mnemonicParsing="false" onAction="#handleTeclaNumerica" prefHeight="50.0" prefWidth="50.0" text="4">
+        <Button fx:id="tecla4" layoutX="354.0" layoutY="206.0" mnemonicParsing="false" onAction="#handleTeclaNumerica" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: black;" text="4" textFill="WHITE">
             <font>
                 <Font name="Segoe UI Bold" size="25.0" />
             </font></Button>
-        <Button fx:id="tecla5" layoutX="444.0" layoutY="206.0" mnemonicParsing="false" onAction="#handleTeclaNumerica" prefHeight="50.0" prefWidth="50.0" text="5">
+        <Button fx:id="tecla5" layoutX="444.0" layoutY="206.0" mnemonicParsing="false" onAction="#handleTeclaNumerica" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: black;" text="5" textFill="WHITE">
             <font>
                 <Font name="Segoe UI Bold" size="25.0" />
             </font></Button>
-        <Button fx:id="tecla6" layoutX="534.0" layoutY="206.0" maxWidth="50.0" mnemonicParsing="false" onAction="#handleTeclaNumerica" prefHeight="50.0" prefWidth="50.0" text="6">
+        <Button fx:id="tecla6" layoutX="534.0" layoutY="206.0" maxWidth="50.0" mnemonicParsing="false" onAction="#handleTeclaNumerica" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: black;" text="6" textFill="WHITE">
             <font>
                 <Font name="Segoe UI Bold" size="25.0" />
             </font></Button>
-        <Button fx:id="tecla7" layoutX="354.0" layoutY="282.0" mnemonicParsing="false" onAction="#handleTeclaNumerica" prefHeight="50.0" prefWidth="50.0" text="7">
+        <Button fx:id="tecla7" layoutX="354.0" layoutY="282.0" mnemonicParsing="false" onAction="#handleTeclaNumerica" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: black;" text="7" textFill="WHITE">
             <font>
                 <Font name="Segoe UI Bold" size="25.0" />
             </font></Button>
-        <Button fx:id="tecla8" layoutX="444.0" layoutY="282.0" mnemonicParsing="false" onAction="#handleTeclaNumerica" prefHeight="50.0" prefWidth="50.0" text="8">
+        <Button fx:id="tecla8" layoutX="444.0" layoutY="282.0" mnemonicParsing="false" onAction="#handleTeclaNumerica" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: black;" text="8" textFill="WHITE">
             <font>
                 <Font name="Segoe UI Bold" size="25.0" />
             </font></Button>
-        <Button fx:id="tecla9" layoutX="534.0" layoutY="282.0" mnemonicParsing="false" onAction="#handleTeclaNumerica" prefHeight="50.0" prefWidth="50.0" text="9">
+        <Button fx:id="tecla9" layoutX="534.0" layoutY="282.0" mnemonicParsing="false" onAction="#handleTeclaNumerica" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: black;" text="9" textFill="WHITE">
             <font>
                 <Font name="Segoe UI Bold" size="25.0" />
             </font></Button>
-        <Button fx:id="teclaBranco" layoutX="337.0" layoutY="442.0" mnemonicParsing="false" onAction="#handleBranco" prefHeight="40.0" prefWidth="85.0" text="BRANCO">
+        <Button fx:id="teclaBranco" layoutX="337.0" layoutY="442.0" mnemonicParsing="false" onAction="#handleBranco" prefHeight="40.0" prefWidth="85.0" style="-fx-background-color: white;" text="BRANCO">
             <font>
                 <Font name="Segoe UI Bold" size="12.0" />
             </font></Button>
-        <Button fx:id="tecla0" layoutX="444.0" layoutY="358.0" mnemonicParsing="false" onAction="#handleTeclaNumerica" prefHeight="50.0" prefWidth="50.0" text="0">
+        <Button fx:id="tecla0" layoutX="444.0" layoutY="358.0" mnemonicParsing="false" onAction="#handleTeclaNumerica" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: black;" text="0" textFill="WHITE">
             <font>
                 <Font name="Segoe UI Bold" size="25.0" />
             </font></Button>
@@ -66,7 +66,7 @@
             <font>
                 <Font name="Segoe UI Bold" size="12.0" />
             </font></Button>
-        <ImageView fx:id="foto" fitHeight="180.0" fitWidth="145.0" layoutX="-16.0" layoutY="-15.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fx:id="foto" fitHeight="180.0" fitWidth="145.0" layoutX="14.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@../../../../../../../../Urna-Eletronica-em-Java/UrnaEletronica/src/main/java/imagens/iflogo.png" />
             </image></ImageView>
