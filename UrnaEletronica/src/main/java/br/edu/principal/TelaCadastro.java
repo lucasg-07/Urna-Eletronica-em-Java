@@ -23,9 +23,32 @@ public class TelaCadastro {
     @FXML
     private Button newRegister;
     @FXML
+    private Button voltaLogin;
+    @FXML
     private Label unvalidRegister;
     @FXML
     private CheckBox showPasswordCheckBox;
+
+
+
+    @FXML
+    private void handleVoltar(ActionEvent click)  {
+        try{
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("tela-login.fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.setTitle("Login");
+
+            Stage loginStage = (Stage) voltaLogin.getScene().getWindow();
+            loginStage.close();
+
+            stage.show();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
 
 
     private void togglePasswordField(boolean usePasswordField) {
@@ -78,7 +101,7 @@ public class TelaCadastro {
                     Scene scene = new Scene(root);
                     Stage stage = new Stage();
                     stage.setScene(scene);
-                    stage.setTitle("Votação");
+                    stage.setTitle("Login");
 
                     Stage loginStage = (Stage) newRegister.getScene().getWindow();
                     loginStage.close();
