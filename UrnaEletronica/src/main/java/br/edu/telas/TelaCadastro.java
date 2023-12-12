@@ -34,7 +34,7 @@ public class TelaCadastro {
     @FXML
     private void handleVoltar(ActionEvent click)  {
         try{
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("tela-login.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/br/edu/principal/tela-login.fxml"));
             Parent root = loader.load();
             Scene scene = new Scene(root);
             Stage stage = new Stage();
@@ -96,7 +96,7 @@ public class TelaCadastro {
         if(shouldCreate){
             try {
                 if (this.createNewUser(name,password,registration)) {
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("tela-login.fxml"));
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/br/edu/principal/tela-login.fxml"));
                     Parent root = loader.load();
                     Scene scene = new Scene(root);
                     Stage stage = new Stage();

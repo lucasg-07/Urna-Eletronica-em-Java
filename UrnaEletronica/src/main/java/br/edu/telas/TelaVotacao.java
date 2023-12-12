@@ -110,7 +110,7 @@ public class TelaVotacao {
     private void HandleHelp() {
         // Carregar a nova tela
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("tela-ajuda.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/br/edu/principal/tela-ajuda.fxml"));
             Parent root = loader.load();
             Scene scene = new Scene(root);
             Stage stage = new Stage();

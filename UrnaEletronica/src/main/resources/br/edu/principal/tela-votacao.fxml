@@ -86,11 +86,8 @@
             <font>
                 <Font name="Segoe UI" size="14.0" />
             </font></Label>
-<<<<<<< HEAD
-        <Label fx:id="resultado" layoutX="134.0" layoutY="412.0" prefHeight="50.0" prefWidth="58.0" style="-fx-background-color: 000000;">
-=======
+
         <Label fx:id="resultado" alignment="CENTER" layoutX="97.0" layoutY="408.0" prefHeight="50.0" prefWidth="126.0" style="-fx-background-color: 000000;">
->>>>>>> 9412c2a222da876f7f3671c7c59b663cdac0c7ce
             <font>
                 <Font name="Segoe UI Bold" size="24.0" />
             </font>

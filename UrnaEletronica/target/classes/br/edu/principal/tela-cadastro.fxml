@@ -6,11 +6,9 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<<<<<<< HEAD
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="543.0" prefWidth="630.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.principal.TelaCadastro">
-=======
+
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="543.0" prefWidth="630.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.telas.TelaCadastro">
->>>>>>> 9412c2a222da876f7f3671c7c59b663cdac0c7ce
+
    <children>
       <Rectangle arcWidth="5.0" fill="WHITE" height="473.0" layoutY="70.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="630.0" />
       <TextField fx:id="newRegistration" layoutX="202.0" layoutY="270.0" prefHeight="40.0" prefWidth="235.0" promptText="Matrícula" />
