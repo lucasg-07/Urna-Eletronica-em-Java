@@ -2,18 +2,24 @@ package br.edu.uteis;
 
 public class Candidato {
 
-    public String Nome;
-    public String Chapa;
-    public String Vice;
-    public int Numero;
-    public int votos;
+    protected String Nome;
+    protected String Chapa;
+    protected String Vice;
+    protected String Imagem;
+    protected int Numero;
+    protected int Votos;
 
-    public Candidato(String nome, String chapa, String vice, int numero) {
+    public Candidato(String nome, String chapa, String vice, String Imagem, int numero) {
         this.Nome = nome;
         this.Chapa = chapa;
         this.Vice = vice;
         this.Numero = numero;
-        this.votos = 0;
+        this.Imagem = Imagem;
+        this.Votos = 0;
+    }
+
+    public Candidato() {
+        this.Votos = 0;
     }
 
 
@@ -29,11 +35,21 @@ public class Candidato {
         return Vice;
     }
 
+    public String getImagem() {
+        return Imagem;
+    }
+
     public int getNumero() {
         return Numero;
     }
 
     public int getVotos() {
-        return votos;
+        return Votos;
     }
+
+    public int somaVotos() {
+        this.Votos += 1;
+        return Votos;
+    }
+
 }
