@@ -62,7 +62,7 @@ public class TelaVotacao {
         for (Candidato candidato : listaDeCandidatos) {
             if (candidato.getNumero() == Numero) {
                 System.out.printf("O valor corresponde à %s\n", candidato.getNome());
-                chapa.setText("CHAPA: " + candidato.getChapa());
+                chapa.setText("CHAPA: " + candidato.getPartido());
                 presidente.setText("PRESIDENTE: " + candidato.getNome());
                 vice.setText("VICE: " + candidato.getVice());
                 resultado.setText(Resultado);

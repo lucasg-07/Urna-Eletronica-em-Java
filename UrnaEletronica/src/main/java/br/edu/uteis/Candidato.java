@@ -3,15 +3,15 @@ package br.edu.uteis;
 public class Candidato {
 
     protected String Nome;
-    protected String Chapa;
+    protected String Partido;
     protected String Vice;
     protected String Imagem;
     protected int Numero;
     protected int Votos;
 
-    public Candidato(String nome, String chapa, String vice, String Imagem, int numero) {
+    public Candidato(String nome, String partido, String vice, String Imagem, int numero) {
         this.Nome = nome;
-        this.Chapa = chapa;
+        this.Partido = partido;
         this.Vice = vice;
         this.Numero = numero;
         this.Imagem = Imagem;
@@ -27,8 +27,8 @@ public class Candidato {
         return Nome;
     }
 
-    public String getChapa() {
-        return Chapa;
+    public String getPartido() {
+        return Partido;
     }
 
     public String getVice() {

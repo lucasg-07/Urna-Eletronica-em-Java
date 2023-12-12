@@ -15,11 +15,6 @@
                 <Image url="@../../../../java/imagens/iflogo.png" />
             </image>
         </ImageView>
-        <Button fx:id="Help" graphicTextGap="0.0" layoutX="560.0" layoutY="23.0" mnemonicParsing="false" onAction="#HandleHelp" text="Ajuda" textAlignment="CENTER" textOverrun="CLIP">
-            <font>
-                <Font name="Segoe UI" size="14.0" />
-            </font>
-        </Button>
         <ButtonBar layoutX="336.0" layoutY="360.0" prefHeight="40.0" prefWidth="200.0" />
         <Rectangle arcWidth="5.0" fill="#d9d9d9" height="385.0" layoutX="20.0" layoutY="114.0" smooth="false" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="280.0" />
         <Rectangle fill="#d9d9d9" height="385.0" layoutX="329.0" layoutY="114.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="280.0" />
