@@ -1,4 +1,3 @@
-
 package br.edu.telas;
 
 
@@ -24,7 +23,10 @@ public class TelaLogin {
 
     @FXML
     private Button entrarLogin;
-
+    @FXML
+    private Button ajudaLogin;
+    @FXML
+    private Button sobreLogin;
     @FXML
     private TextField usernameField;
     @FXML
@@ -119,6 +121,44 @@ public class TelaLogin {
             }
         } catch (IOException e) {
             // Trate a exceção adequadamente (mostre uma mensagem ao usuário ou registre-a)
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void handleSobre() {
+        try{
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/br/edu/principal/tela-sobre.fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.setTitle("Login");
+
+            Stage loginStage = (Stage) sobreLogin.getScene().getWindow();
+            loginStage.close();
+
+            stage.show();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void handleAjuda() {
+        try{
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/br/edu/principal/tela-ajuda.fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.setTitle("Login");
+
+            Stage loginStage = (Stage) ajudaLogin.getScene().getWindow();
+            loginStage.close();
+
+            stage.show();
+        }catch (IOException e){
             e.printStackTrace();
         }
     }

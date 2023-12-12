@@ -6,8 +6,7 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="543.0" prefWidth="630.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.telas.TelaCadastro">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="543.0" prefWidth="630.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.telas.TelaCadastro">
 
    <children>
       <Rectangle arcWidth="5.0" fill="WHITE" height="473.0" layoutY="70.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="630.0" />
@@ -26,17 +25,17 @@
       </Text>
       <Rectangle arcWidth="5.0" fill="#135000" height="70.0" smooth="false" stroke="BLACK" strokeMiterLimit="0.0" strokeType="INSIDE" strokeWidth="0.0" width="631.0" />
       <ImageView fitHeight="50.0" fitWidth="181.13" layoutX="20.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" />
-      <Button fx:id="voltaLogin" graphicTextGap="0.0" layoutX="420.0" layoutY="22.0" mnemonicParsing="false" onAction="#handleVoltar" style="-fx-background-color: 135000;" text="Voltar" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP">
+      <Button fx:id="voltaCadastro" graphicTextGap="0.0" layoutX="420.0" layoutY="22.0" mnemonicParsing="false" onAction="#handleVoltar" style="-fx-background-color: 135000;" text="Voltar" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP">
          <font>
             <Font name="Segoe UI" size="16.0" />
          </font>
       </Button>
-      <Button fx:id="ajudaCadastro" graphicTextGap="0.0" layoutX="540.0" layoutY="22.0" mnemonicParsing="false" style="-fx-background-color: 135000;" text="Ajuda" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP">
+      <Button fx:id="ajudaCadastro" graphicTextGap="0.0" layoutX="540.0" layoutY="22.0" mnemonicParsing="false" onAction="#handleAjuda" style="-fx-background-color: 135000;" text="Ajuda" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP">
          <font>
             <Font name="Segoe UI" size="16.0" />
          </font>
       </Button>
-      <Button fx:id="sobreCadastro" layoutX="480.0" layoutY="22.0" mnemonicParsing="false" style="-fx-background-color: 135000;" text="Sobre" textAlignment="CENTER" textFill="WHITE">
+      <Button fx:id="sobreCadastro" layoutX="480.0" layoutY="22.0" mnemonicParsing="false" onAction="#handleSobre" style="-fx-background-color: 135000;" text="Sobre" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="Segoe UI" size="16.0" />
          </font>
