@@ -10,7 +10,7 @@ import java.io.IOException;
 public class Principal extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("tela-votacao.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("tela-login.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 630, 540);
         stage.setTitle("Urna Eletrônica");
         stage.setScene(scene);
