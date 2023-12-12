@@ -22,9 +22,6 @@
             </font>
         </Text>
         <Rectangle arcWidth="5.0" fill="#135000" height="70.0" smooth="false" stroke="BLACK" strokeMiterLimit="0.0" strokeType="INSIDE" strokeWidth="0.0" width="631.0" />
-        <ImageView fitHeight="50.0" fitWidth="181.13" layoutX="20.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
-            <Image url="@../../../../java/imagens/iflogo.png" />
-        </ImageView>
         <Button fx:id="ajudaCadastro" graphicTextGap="0.0" layoutX="540.0" layoutY="22.0" mnemonicParsing="false" style="-fx-background-color: 135000;" text="Ajuda" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP">
             <font>
                 <Font name="Segoe UI" size="16.0" />
@@ -39,6 +36,7 @@
       <Hyperlink fx:id="linkCadastro" layoutX="226.0" layoutY="357.0" onAction="#handleCadastro" text="Não possui cadastro? Clique aqui!" />
         <PasswordField fx:id="passwordField" layoutX="202.0" layoutY="310.0" prefHeight="40.0" prefWidth="235.0" promptText="Senha" />
         <CheckBox fx:id="showPasswordCheckBox" layoutX="406.0" layoutY="321.0" mnemonicParsing="false" onAction="#handleShowPassword" />
+        <ImageView fx:id="logoImageView" fitHeight="50.0" fitWidth="181.13" layoutX="20.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" />
 
     </children>
 </AnchorPane>

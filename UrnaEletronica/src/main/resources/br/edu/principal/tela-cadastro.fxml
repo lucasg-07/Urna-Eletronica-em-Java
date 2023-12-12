@@ -25,7 +25,7 @@
          </font>
       </Text>
       <Rectangle arcWidth="5.0" fill="#135000" height="70.0" smooth="false" stroke="BLACK" strokeMiterLimit="0.0" strokeType="INSIDE" strokeWidth="0.0" width="631.0" />
-      <ImageView fitHeight="50.0" fitWidth="181.13" layoutX="20.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="logoImageView" fitHeight="50.0" fitWidth="181.13" layoutX="20.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" />
       <Button fx:id="voltaLogin" graphicTextGap="0.0" layoutX="420.0" layoutY="22.0" mnemonicParsing="false" onAction="#handleVoltar" style="-fx-background-color: 135000;" text="Voltar" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP">
          <font>
             <Font name="Segoe UI" size="16.0" />

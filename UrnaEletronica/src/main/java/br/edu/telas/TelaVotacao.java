@@ -38,6 +38,9 @@ public class TelaVotacao {
     @FXML
     private ImageView foto;
 
+    @FXML
+    private ImageView logoImageView;
+
 
     Candidato candidato1 = new Candidato("Luiz Inácio", "PT", "Taveira", "img/testeL", 13);
     Candidato candidato2 = new Candidato("Jair Bolsonaro", "PL", "Lucas G.", "img/testeB", 22);
@@ -50,10 +53,14 @@ public class TelaVotacao {
         listaDeCandidatos = new Candidato[2];
     }
 
+    @FXML
     public void initialize() {
         listaDeCandidatos = new Candidato[2];
         listaDeCandidatos[0] = candidato1;
         listaDeCandidatos[1] = candidato2;
+
+        Image logoImage = new Image(getClass().getResource("/imagens/iflogo.png").toExternalForm());
+        logoImageView.setImage(logoImage);
     }
 
     private void encontrarCandidato(int Numero, String Resultado) {

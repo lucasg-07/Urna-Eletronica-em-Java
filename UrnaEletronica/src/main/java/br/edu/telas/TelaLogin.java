@@ -1,12 +1,5 @@
-
 package br.edu.telas;
 
-
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -14,12 +7,18 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import javafx.event.ActionEvent;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+
 import java.io.IOException;
-// Importações omitidas por brevidade
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class TelaLogin {
 
-    // Adicione constantes para mensagens
     private static final String AUTHENTICATION_FAILURE_MSG = "Falha na autenticação. Verifique as credenciais.";
 
     @FXML
@@ -27,6 +26,7 @@ public class TelaLogin {
 
     @FXML
     private TextField usernameField;
+
     @FXML
     private PasswordField passwordField;
 
@@ -42,14 +42,15 @@ public class TelaLogin {
     @FXML
     private CheckBox showPasswordCheckBox;
 
+    @FXML
+    private ImageView logoImageView;
+
     private void togglePasswordField(boolean usePasswordField) {
         if (usePasswordField) {
-            // Se usePasswordField for true, configura o campo como PasswordField
             newPasswordTextField.setVisible(false);
             passwordField.setVisible(true);
             passwordField.setText(newPasswordTextField.getText());
         } else {
-            // Se usePasswordField for false, configura o campo como TextField
             passwordField.setVisible(false);
             newPasswordTextField.setVisible(true);
             newPasswordTextField.setText(passwordField.getText());
@@ -58,11 +59,15 @@ public class TelaLogin {
 
     @FXML
     private void initialize() {
-        // Adiciona um listener ao CheckBox para detectar alterações de estado
+        togglePasswordField(true);
+
         showPasswordCheckBox.selectedProperty().addListener((observable, oldValue, newValue) -> {
-            // Chama o método para alternar entre PasswordField e TextField
             togglePasswordField(!newValue);
         });
+
+        // Carregar a imagem durante a inicialização
+        Image logoImage = new Image(getClass().getResource("/imagens/iflogo.png").toExternalForm());
+        logoImageView.setImage(logoImage);
     }
 
     @FXML
@@ -70,7 +75,6 @@ public class TelaLogin {
         String password = passwordField.getText();
 
         if (showPasswordCheckBox.isSelected()) {
-            // Se o CheckBox estiver marcado, mostra a senha como TextField
             newPasswordTextField.setText(password);
         } else {
             newPasswordTextField.setText("");
@@ -78,20 +82,20 @@ public class TelaLogin {
     }
 
     @FXML
-    private void handleCadastro(ActionEvent click)  {
-        try{
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/br/edu/principal/tela-cadastro.fxml"));
-        Parent root = loader.load();
-        Scene scene = new Scene(root);
-        Stage stage = new Stage();
-        stage.setScene(scene);
-        stage.setTitle("Cadastro");
+    private void handleCadastro(ActionEvent click) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/br/edu/principal/tela-cadastro.fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.setTitle("Cadastro");
 
-        Stage loginStage = (Stage) linkCadastro.getScene().getWindow();
-        loginStage.close();
+            Stage loginStage = (Stage) linkCadastro.getScene().getWindow();
+            loginStage.close();
 
-        stage.show();
-        }catch (IOException e){
+            stage.show();
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
@@ -118,7 +122,6 @@ public class TelaLogin {
                 this.unvalidLogin.setText(AUTHENTICATION_FAILURE_MSG);
             }
         } catch (IOException e) {
-            // Trate a exceção adequadamente (mostre uma mensagem ao usuário ou registre-a)
             e.printStackTrace();
         }
     }

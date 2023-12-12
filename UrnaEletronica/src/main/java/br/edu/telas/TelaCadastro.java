@@ -6,6 +6,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -28,6 +30,8 @@ public class TelaCadastro {
     private Label unvalidRegister;
     @FXML
     private CheckBox showPasswordCheckBox;
+    @FXML
+    private ImageView logoImageView;
 
 
 
@@ -72,6 +76,8 @@ public class TelaCadastro {
             // Chama o método para alternar entre PasswordField e TextField
             togglePasswordField(!newValue);
         });
+        Image logoImage = new Image(getClass().getResource("/imagens/iflogo.png").toExternalForm());
+        logoImageView.setImage(logoImage);
     }
 
     @FXML
