@@ -2,12 +2,12 @@ package br.edu.uteis;
 
 public class Candidato {
 
-    public String Nome;
-    public String Chapa;
-    public String Vice;
-    public String Imagem;
-    public int Numero;
-    public int Votos;
+    protected String Nome;
+    protected String Chapa;
+    protected String Vice;
+    protected String Imagem;
+    protected int Numero;
+    protected int Votos;
 
     public Candidato(String nome, String chapa, String vice, String Imagem, int numero) {
         this.Nome = nome;
@@ -18,8 +18,7 @@ public class Candidato {
         this.Votos = 0;
     }
 
-    public Candidato(String nome) {
-        this.Nome = nome;
+    public Candidato() {
         this.Votos = 0;
     }
 
@@ -45,6 +44,11 @@ public class Candidato {
     }
 
     public int getVotos() {
+        return Votos;
+    }
+
+    public int somaVotos() {
+        this.Votos += 1;
         return Votos;
     }
 
