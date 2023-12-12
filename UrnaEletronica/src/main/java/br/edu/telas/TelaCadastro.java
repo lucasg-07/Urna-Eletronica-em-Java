@@ -62,7 +62,7 @@ public class TelaCadastro {
             Scene scene = new Scene(root);
             Stage stage = new Stage();
             stage.setScene(scene);
-            stage.setTitle("Login");
+            stage.setTitle("Ajuda");
 
             Stage loginStage = (Stage) ajudaCadastro.getScene().getWindow();
             loginStage.close();
@@ -81,7 +81,7 @@ public class TelaCadastro {
             Scene scene = new Scene(root);
             Stage stage = new Stage();
             stage.setScene(scene);
-            stage.setTitle("Login");
+            stage.setTitle("Sobre");
 
             Stage loginStage = (Stage) sobreCadastro.getScene().getWindow();
             loginStage.close();

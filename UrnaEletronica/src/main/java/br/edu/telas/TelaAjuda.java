@@ -23,7 +23,7 @@ public class TelaAjuda {
             Scene scene = new Scene(root);
             Stage stage = new Stage();
             stage.setScene(scene);
-            stage.setTitle("Login");
+            stage.setTitle("Sobre");
 
             Stage loginStage = (Stage) sobreAjuda.getScene().getWindow();
             loginStage.close();
