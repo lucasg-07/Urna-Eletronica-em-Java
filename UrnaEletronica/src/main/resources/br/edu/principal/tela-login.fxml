@@ -23,7 +23,7 @@
         </Text>
         <Rectangle arcWidth="5.0" fill="#135000" height="70.0" smooth="false" stroke="BLACK" strokeMiterLimit="0.0" strokeType="INSIDE" strokeWidth="0.0" width="631.0" />
         <ImageView fitHeight="50.0" fitWidth="181.13" layoutX="20.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
-            <Image url="@../../../../java/imagens/iflogo.png" />
+            <Image url="@../../../../br/edu/principal/imagens/iflogo.png" />
         </ImageView>
         <Button fx:id="ajudaLogin" graphicTextGap="0.0" layoutX="540.0" layoutY="22.0" mnemonicParsing="false" onAction="#handleAjuda" style="-fx-background-color: 135000;" text="Ajuda" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP">
             <font>
