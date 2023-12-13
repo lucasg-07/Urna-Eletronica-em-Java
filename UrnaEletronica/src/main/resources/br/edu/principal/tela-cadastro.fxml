@@ -6,14 +6,16 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="543.0" prefWidth="630.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.telas.TelaCadastro">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="543.0" prefWidth="630.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.telas.TelaCadastro">
 
    <children>
       <Rectangle arcWidth="5.0" fill="WHITE" height="473.0" layoutY="70.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="630.0" />
-      <TextField fx:id="newRegistration" layoutX="202.0" layoutY="270.0" prefHeight="40.0" prefWidth="235.0" promptText="Matrícula" />
+
       <TextField fx:id="newName" layoutX="202.0" layoutY="210.0" prefHeight="40.0" prefWidth="235.0" promptText="Nome Completo" />
+      <TextField fx:id="newRegistration" layoutX="202.0" layoutY="270.0" prefHeight="40.0" prefWidth="235.0" promptText="Matrícula" />
       <TextField fx:id="newPasswordTextField" layoutX="202.0" layoutY="331.0" prefHeight="40.0" prefWidth="235.0" />
+      <PasswordField fx:id="newPassword" layoutX="202.0" layoutY="331.0" prefHeight="40.0" prefWidth="235.0" promptText="Senha" />
+      <CheckBox fx:id="showPasswordCheckBox" layoutX="410.0" layoutY="343.0" mnemonicParsing="false" onAction="#handleShowPassword" />
       <Button fx:id="newRegister" layoutX="210.0" layoutY="399.0" mnemonicParsing="false" onAction="#handleCadastrar" prefHeight="40.0" prefWidth="220.0" text="Cadastrar">
          <font>
             <Font name="Segoe UI" size="12.800000190734863" />
@@ -42,10 +44,6 @@
          </font>
       </Button>
       <Label fx:id="unvalidRegister" layoutX="233.0" layoutY="382.0" textFill="red" />
-      <PasswordField fx:id="newPassword" layoutX="202.0" layoutY="331.0" prefHeight="40.0" prefWidth="235.0" promptText="Senha" />
-      <CheckBox fx:id="showPasswordCheckBox" layoutX="410.0" layoutY="343.0" mnemonicParsing="false" onAction="#handleShowPassword" />
-
-
 
    </children>
 </AnchorPane>
