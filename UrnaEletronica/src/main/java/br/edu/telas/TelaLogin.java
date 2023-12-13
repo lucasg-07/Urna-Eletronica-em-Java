@@ -1,11 +1,5 @@
 package br.edu.telas;
 
-
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -13,19 +7,29 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import javafx.event.ActionEvent;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+
 import java.io.IOException;
-// Importações omitidas por brevidade
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class TelaLogin {
 
-    // Adicione constantes para mensagens
     private static final String AUTHENTICATION_FAILURE_MSG = "Falha na autenticação. Verifique as credenciais.";
 
     @FXML
     private Button entrarLogin;
-
+    @FXML
+    private Button ajudaLogin;
+    @FXML
+    private Button sobreLogin;
     @FXML
     private TextField usernameField;
+
     @FXML
     private PasswordField passwordField;
 
@@ -35,22 +39,66 @@ public class TelaLogin {
     @FXML
     private Hyperlink linkCadastro;
 
+    @FXML
+    private TextField newPasswordTextField;
 
     @FXML
-    private void handleCadastro(ActionEvent click)  {
-        try{
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("tela-cadastro.fxml"));
-        Parent root = loader.load();
-        Scene scene = new Scene(root);
-        Stage stage = new Stage();
-        stage.setScene(scene);
-        stage.setTitle("Cadastro");
+    private CheckBox showPasswordCheckBox;
 
-        Stage loginStage = (Stage) linkCadastro.getScene().getWindow();
-        loginStage.close();
+    @FXML
+    private ImageView logoImageView;
 
-        stage.show();
-        }catch (IOException e){
+    private void togglePasswordField(boolean usePasswordField) {
+        if (usePasswordField) {
+            newPasswordTextField.setVisible(false);
+            passwordField.setVisible(true);
+            passwordField.setText(newPasswordTextField.getText());
+        } else {
+            passwordField.setVisible(false);
+            newPasswordTextField.setVisible(true);
+            newPasswordTextField.setText(passwordField.getText());
+        }
+    }
+
+    @FXML
+    private void initialize() {
+        togglePasswordField(true);
+
+        showPasswordCheckBox.selectedProperty().addListener((observable, oldValue, newValue) -> {
+            togglePasswordField(!newValue);
+        });
+
+        // Carregar a imagem durante a inicialização
+        Image logoImage = new Image(getClass().getResource("/imagens/iflogo.png").toExternalForm());
+        logoImageView.setImage(logoImage);
+    }
+
+    @FXML
+    private void handleShowPassword(ActionEvent click) {
+        String password = passwordField.getText();
+
+        if (showPasswordCheckBox.isSelected()) {
+            newPasswordTextField.setText(password);
+        } else {
+            newPasswordTextField.setText("");
+        }
+    }
+
+    @FXML
+    private void handleCadastro(ActionEvent click) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/br/edu/principal/tela-cadastro.fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.setTitle("Cadastro");
+
+            Stage loginStage = (Stage) linkCadastro.getScene().getWindow();
+            loginStage.close();
+
+            stage.show();
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
@@ -62,7 +110,7 @@ public class TelaLogin {
 
         try {
             if (this.authenticate(username, password)) {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("tela-votacao.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/br/edu/principal/tela-votacao.fxml"));
                 Parent root = loader.load();
                 Scene scene = new Scene(root);
                 Stage stage = new Stage();
@@ -77,7 +125,44 @@ public class TelaLogin {
                 this.unvalidLogin.setText(AUTHENTICATION_FAILURE_MSG);
             }
         } catch (IOException e) {
-            // Trate a exceção adequadamente (mostre uma mensagem ao usuário ou registre-a)
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void handleSobre() {
+        try{
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/br/edu/principal/tela-sobre.fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.setTitle("Sobre");
+
+            Stage loginStage = (Stage) sobreLogin.getScene().getWindow();
+            loginStage.close();
+
+            stage.show();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void handleAjuda() {
+        try{
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/br/edu/principal/tela-ajuda.fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.setTitle("Ajuda");
+
+            Stage loginStage = (Stage) ajudaLogin.getScene().getWindow();
+            loginStage.close();
+
+            stage.show();
+        }catch (IOException e){
             e.printStackTrace();
         }
     }
