@@ -36,6 +36,9 @@ public class TelaVotacao {
     private Label resultado;
 
     @FXML
+    private Label semCandidato;
+
+    @FXML
     private ImageView foto;
 
 
@@ -55,6 +58,7 @@ public class TelaVotacao {
         listaDeCandidatos[0] = candidato1;
         listaDeCandidatos[1] = candidato2;
     }
+
 
     private void encontrarCandidato(int Numero, String Resultado) {
         boolean candidatoEncontrado = false;
