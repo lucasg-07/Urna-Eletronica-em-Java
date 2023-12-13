@@ -19,8 +19,6 @@ import java.sql.SQLException;
 
 public class TelaLogin {
 
-    private static final String AUTHENTICATION_FAILURE_MSG = "Falha na autenticação. Verifique as credenciais.";
-
     @FXML
     private Button entrarLogin;
     @FXML
@@ -117,12 +115,23 @@ public class TelaLogin {
                 stage.setScene(scene);
                 stage.setTitle("Votação");
 
-                Stage loginStage = (Stage) entrarLogin.getScene().getWindow();
-                loginStage.close();
+                // Passe a matrícula para o controlador de votação
+                TelaVotacao controladorVotacao = loader.getController();
+                controladorVotacao.setMatricula(username);
 
-                stage.show();
+
+                // Verifique se o usuário já votou
+                if (controladorVotacao.verificarStatusVoto()) {
+                    this.unvalidLogin.setText("Você já votou, aguarde outra votação");
+                } else {
+                    // Se o usuário ainda não votou, continue com a exibição da tela de votação
+                    Stage loginStage = (Stage) entrarLogin.getScene().getWindow();
+                    loginStage.close();
+                    stage.show();
+                }
             } else {
-                this.unvalidLogin.setText(AUTHENTICATION_FAILURE_MSG);
+                this.unvalidLogin.setText("Falha na autenticação. Verifique as credenciais.");
+
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -131,7 +140,7 @@ public class TelaLogin {
 
     @FXML
     private void handleSobre() {
-        try{
+        try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/br/edu/principal/tela-sobre.fxml"));
             Parent root = loader.load();
             Scene scene = new Scene(root);
@@ -143,14 +152,14 @@ public class TelaLogin {
             loginStage.close();
 
             stage.show();
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     @FXML
     private void handleAjuda() {
-        try{
+        try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/br/edu/principal/tela-ajuda.fxml"));
             Parent root = loader.load();
             Scene scene = new Scene(root);
@@ -162,7 +171,7 @@ public class TelaLogin {
             loginStage.close();
 
             stage.show();
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }

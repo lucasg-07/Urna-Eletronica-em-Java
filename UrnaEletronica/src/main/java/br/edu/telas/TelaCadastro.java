@@ -37,11 +37,11 @@ public class TelaCadastro {
     @FXML
     private ImageView logoImageView;
 
-
+    private String matricula;  // Adicionado para armazenar a matrícula
 
     @FXML
-    private void handleVoltar(ActionEvent click)  {
-        try{
+    private void handleVoltar(ActionEvent click) {
+        try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/br/edu/principal/tela-login.fxml"));
             Parent root = loader.load();
             Scene scene = new Scene(root);
@@ -53,14 +53,14 @@ public class TelaCadastro {
             loginStage.close();
 
             stage.show();
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     @FXML
-    private void handleAjuda(ActionEvent click)  {
-        try{
+    private void handleAjuda(ActionEvent click) {
+        try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/br/edu/principal/tela-ajuda.fxml"));
             Parent root = loader.load();
             Scene scene = new Scene(root);
@@ -72,14 +72,14 @@ public class TelaCadastro {
             loginStage.close();
 
             stage.show();
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     @FXML
-    private void handleSobre(ActionEvent click)  {
-        try{
+    private void handleSobre(ActionEvent click) {
+        try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/br/edu/principal/tela-sobre.fxml"));
             Parent root = loader.load();
             Scene scene = new Scene(root);
@@ -91,20 +91,17 @@ public class TelaCadastro {
             loginStage.close();
 
             stage.show();
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-
     private void togglePasswordField(boolean usePasswordField) {
         if (usePasswordField) {
-            // Se usePasswordField for true, configura o campo como PasswordField
             newPasswordTextField.setVisible(false);
             newPassword.setVisible(true);
             newPassword.setText(newPasswordTextField.getText());
         } else {
-            // Se usePasswordField for false, configura o campo como TextField
             newPassword.setVisible(false);
             newPasswordTextField.setVisible(true);
             newPasswordTextField.setText(newPassword.getText());
@@ -113,9 +110,7 @@ public class TelaCadastro {
 
     @FXML
     private void initialize() {
-        // Adiciona um listener ao CheckBox para detectar alterações de estado
         showPasswordCheckBox.selectedProperty().addListener((observable, oldValue, newValue) -> {
-            // Chama o método para alternar entre PasswordField e TextField
             togglePasswordField(!newValue);
         });
         Image logoImage = new Image(getClass().getResource("/imagens/iflogo.png").toExternalForm());
@@ -127,23 +122,27 @@ public class TelaCadastro {
         String password = newPassword.getText();
 
         if (showPasswordCheckBox.isSelected()) {
-            // Se o CheckBox estiver marcado, mostra a senha como TextField
             newPasswordTextField.setText(password);
         } else {
             newPasswordTextField.setText("");
         }
     }
+
     @FXML
-    private void handleCadastrar(ActionEvent click){
+    private void handleCadastrar(ActionEvent click) {
         String name = this.newName.getText();
         String password = this.newPassword.getText();
         String registration = this.newRegistration.getText();
 
-        boolean shouldCreate = checkNewUser(name,password,registration);
+        boolean shouldCreate = checkNewUser(name, password, registration);
 
-        if(shouldCreate){
-            try {
-                if (this.createNewUser(name,password,registration)) {
+        if (shouldCreate) {
+            String userRegistration = createNewUser(name, password, registration);
+
+            if (userRegistration != null) {
+                this.matricula = userRegistration;
+
+                try {
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/br/edu/principal/tela-login.fxml"));
                     Parent root = loader.load();
                     Scene scene = new Scene(root);
@@ -155,31 +154,29 @@ public class TelaCadastro {
                     loginStage.close();
 
                     stage.show();
-                } else {
-                    System.out.println("Erro");
+
+                    // Passe a matrícula para o controlador principal
+                    TelaVotacao controladorVotacao = loader.getController();
+                    controladorVotacao.setMatricula(matricula);
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
-            } catch (IOException e) {
-                // Trate a exceção adequadamente (mostre uma mensagem ao usuário ou registre-a)
-                e.printStackTrace();
+            } else {
+                System.out.println("Erro ao criar usuário");
             }
-        }
-        else {
+        } else {
             this.unvalidRegister.setText("* Nenhum campo deve estar vazio!");
         }
-
     }
 
-
-
-
-    private boolean createNewUser(String name, String password, String registration){
+    private String createNewUser(String name, String password, String registration) {
         String jdbcUrl = "jdbc:mysql://localhost:3306/students";
         String dbUser = "root";
         String dbPassword = "";
         String query = "INSERT INTO usuarios(usuario, senha, registration) VALUES (?, ?, ?)";
 
         try (Connection conn = DriverManager.getConnection(jdbcUrl, dbUser, dbPassword);
-             PreparedStatement stmt = conn.prepareStatement(query)) {
+             PreparedStatement stmt = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
 
             stmt.setString(1, registration);
             stmt.setString(2, password);
@@ -187,17 +184,25 @@ public class TelaCadastro {
 
             int rowsAffected = stmt.executeUpdate();
 
-            return rowsAffected > 0;
-
-
+            if (rowsAffected > 0) {
+                ResultSet generatedKeys = stmt.getGeneratedKeys();
+                if (generatedKeys.next()) {
+                    return generatedKeys.getString(1);
+                }
+            }
         } catch (SQLException e) {
-
             e.printStackTrace();
-            return false;
         }
-    }
-    private boolean checkNewUser(String name, String password, String registration){
-      return !name.trim().isEmpty() && !password.isEmpty() && !registration.trim().isEmpty();
+
+        return null;
     }
 
+    private boolean checkNewUser(String name, String password, String registration) {
+        return !name.trim().isEmpty() && !password.isEmpty() && !registration.trim().isEmpty();
+    }
+
+    // Adicione este método para obter a matrícula
+    public String getMatricula() {
+        return matricula;
+    }
 }
