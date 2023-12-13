@@ -14,30 +14,43 @@
         <PasswordField fx:id="passwordField" layoutX="202.0" layoutY="310.0" prefHeight="40.0" prefWidth="235.0" promptText="Senha" />
         <CheckBox fx:id="showPasswordCheckBox" layoutX="406.0" layoutY="321.0" mnemonicParsing="false" onAction="#handleShowPassword" />
         <TextField fx:id="newPasswordTextField" layoutX="202.0" layoutY="310.0" prefHeight="40.0" prefWidth="235.0" />
-        <Button fx:id="entrarLogin" layoutX="156.0" layoutY="381.0" mnemonicParsing="false" onAction="#handleEntrar" prefHeight="60.0" prefWidth="320.0" text="Entrar">
+        <Button fx:id="entrarLogin" layoutX="225.0" layoutY="388.0" mnemonicParsing="false" onAction="#handleEntrar" prefHeight="40.0" prefWidth="181.0" text="Entrar">
             <font>
                 <Font name="Segoe UI" size="12.800000190734863" />
             </font>
         </Button>
-        <Text layoutX="211.0" layoutY="212.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bem Vindo(a)!" textAlignment="CENTER" wrappingWidth="216.84376525878906">
+        <Text layoutX="211.0" layoutY="188.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bem Vindo(a)!" textAlignment="CENTER" wrappingWidth="216.84376525878906">
             <font>
                 <Font name="Segoe UI Bold" size="32.0" />
             </font>
         </Text>
         <Rectangle arcWidth="5.0" fill="#135000" height="70.0" smooth="false" stroke="BLACK" strokeMiterLimit="0.0" strokeType="INSIDE" strokeWidth="0.0" width="631.0" />
+<<<<<<< HEAD
         <Button fx:id="ajudaCadastro" graphicTextGap="0.0" layoutX="540.0" layoutY="22.0" mnemonicParsing="false" style="-fx-background-color: 135000;" text="Ajuda" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP">
+=======
+        <ImageView fitHeight="50.0" fitWidth="181.13" layoutX="20.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../../../../java/imagens/iflogo.png" />
+        </ImageView>
+        <Button fx:id="ajudaLogin" graphicTextGap="0.0" layoutX="540.0" layoutY="22.0" mnemonicParsing="false" onAction="#handleAjuda" style="-fx-background-color: 135000;" text="Ajuda" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP">
+>>>>>>> 3f4c1c1c75e4da62fce2aa58110cc54ce43593e8
             <font>
                 <Font name="Segoe UI" size="16.0" />
             </font>
         </Button>
-        <Button fx:id="sobreCadastro" layoutX="480.0" layoutY="22.0" mnemonicParsing="false" style="-fx-background-color: 135000;" text="Sobre" textAlignment="CENTER" textFill="WHITE">
+        <Button fx:id="sobreLogin" layoutX="480.0" layoutY="22.0" mnemonicParsing="false" onAction="#handleSobre" style="-fx-background-color: 135000;" text="Sobre" textAlignment="CENTER" textFill="WHITE">
             <font>
                 <Font name="Segoe UI" size="16.0" />
             </font>
         </Button>
         <Label fx:id="unvalidLogin" layoutX="191.0" layoutY="477.0" />
+<<<<<<< HEAD
       <Hyperlink fx:id="linkCadastro" layoutX="226.0" layoutY="357.0" onAction="#handleCadastro" text="Não possui cadastro? Clique aqui!" />
         <ImageView fx:id="logoImageView" fitHeight="50.0" fitWidth="181.13" layoutX="20.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" />
+=======
+      <Hyperlink fx:id="linkCadastro" layoutX="206.0" layoutY="356.0" onAction="#handleCadastro" text="Não possui cadastro? Clique aqui!" />
+        <PasswordField fx:id="passwordField" layoutX="202.0" layoutY="310.0" prefHeight="40.0" prefWidth="235.0" promptText="Senha" />
+        <CheckBox fx:id="showPasswordCheckBox" layoutX="406.0" layoutY="321.0" mnemonicParsing="false" onAction="#handleShowPassword" />
+>>>>>>> 3f4c1c1c75e4da62fce2aa58110cc54ce43593e8
 
     </children>
 </AnchorPane>

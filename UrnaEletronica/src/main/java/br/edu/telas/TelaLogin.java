@@ -23,7 +23,10 @@ public class TelaLogin {
 
     @FXML
     private Button entrarLogin;
-
+    @FXML
+    private Button ajudaLogin;
+    @FXML
+    private Button sobreLogin;
     @FXML
     private TextField usernameField;
 
@@ -122,6 +125,44 @@ public class TelaLogin {
                 this.unvalidLogin.setText(AUTHENTICATION_FAILURE_MSG);
             }
         } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void handleSobre() {
+        try{
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/br/edu/principal/tela-sobre.fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.setTitle("Sobre");
+
+            Stage loginStage = (Stage) sobreLogin.getScene().getWindow();
+            loginStage.close();
+
+            stage.show();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void handleAjuda() {
+        try{
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/br/edu/principal/tela-ajuda.fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.setTitle("Ajuda");
+
+            Stage loginStage = (Stage) ajudaLogin.getScene().getWindow();
+            loginStage.close();
+
+            stage.show();
+        }catch (IOException e){
             e.printStackTrace();
         }
     }

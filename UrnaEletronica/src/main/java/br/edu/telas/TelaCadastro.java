@@ -25,7 +25,11 @@ public class TelaCadastro {
     @FXML
     private Button newRegister;
     @FXML
-    private Button voltaLogin;
+    private Button voltaCadastro;
+    @FXML
+    private Button ajudaCadastro;
+    @FXML
+    private Button sobreCadastro;
     @FXML
     private Label unvalidRegister;
     @FXML
@@ -45,7 +49,45 @@ public class TelaCadastro {
             stage.setScene(scene);
             stage.setTitle("Login");
 
-            Stage loginStage = (Stage) voltaLogin.getScene().getWindow();
+            Stage loginStage = (Stage) voltaCadastro.getScene().getWindow();
+            loginStage.close();
+
+            stage.show();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void handleAjuda(ActionEvent click)  {
+        try{
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/br/edu/principal/tela-ajuda.fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.setTitle("Ajuda");
+
+            Stage loginStage = (Stage) ajudaCadastro.getScene().getWindow();
+            loginStage.close();
+
+            stage.show();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void handleSobre(ActionEvent click)  {
+        try{
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/br/edu/principal/tela-sobre.fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.setTitle("Sobre");
+
+            Stage loginStage = (Stage) sobreCadastro.getScene().getWindow();
             loginStage.close();
 
             stage.show();
