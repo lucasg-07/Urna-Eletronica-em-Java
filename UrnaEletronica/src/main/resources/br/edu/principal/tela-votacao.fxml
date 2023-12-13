@@ -64,7 +64,7 @@
             </font>
         </Button>
 
-        <ImageView fx:id="foto" fitHeight="180.0" fitWidth="145.0" layoutX="-16.0" layoutY="-15.0" pickOnBounds="true" preserveRatio="true"/>
+        <ImageView fx:id="foto" fitHeight="180.0" fitWidth="145.0" layoutX="-16.0" layoutY="-15.0" pickOnBounds="true" preserveRatio="true" />
 
         <Label fx:id="chapa" layoutX="40.0" layoutY="320.0" prefHeight="23.0" prefWidth="191.0" text="CHAPA:">
             <font>
@@ -89,6 +89,6 @@
                 <Font name="Segoe UI Bold" size="24.0" />
             </font>
         </Label>
-      <Label fx:id="semCandidato" layoutX="243.0" layoutY="506.0" prefHeight="17.0" prefWidth="145.0" />
+      <Label fx:id="semCandidato" layoutX="220.0" layoutY="505.0" prefHeight="17.0" prefWidth="191.0" />
     </children>
 </AnchorPane>

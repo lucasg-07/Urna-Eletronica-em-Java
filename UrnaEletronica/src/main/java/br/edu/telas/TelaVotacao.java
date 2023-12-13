@@ -44,7 +44,7 @@ public class TelaVotacao {
     @FXML
     private ImageView logoImageView;
 
-
+    boolean votou = false;
     Candidato candidato1 = new Candidato("Luiz Inácio", "PT", "Taveira", "img/testeL", 13);
     Candidato candidato2 = new Candidato("Jair Bolsonaro", "PL", "Lucas G.", "img/testeB", 22);
     Candidato nulo = new Candidato();
@@ -100,6 +100,7 @@ public class TelaVotacao {
                 candidato.somaVotos();
                 System.out.printf("%s recebeu: %d votos\n", candidato.getNome(), candidato.getVotos());
                 candidatoEncontrado = true;
+                votou = true;
                 break;
             }
         }
@@ -177,20 +178,24 @@ public class TelaVotacao {
             numvoto = Integer.parseInt(resultado.getText());
         }
         votarCandidato(numvoto, resultado.getText());
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/br/edu/principal/tela-fim.fxml"));
-            Parent root = loader.load();
-            Scene scene = new Scene(root);
-            Stage stage = new Stage();
-            stage.setScene(scene);
-            stage.setTitle("Voto Computado");
+        if(votou == true) {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/br/edu/principal/tela-fim.fxml"));
+                Parent root = loader.load();
+                Scene scene = new Scene(root);
+                Stage stage = new Stage();
+                stage.setScene(scene);
+                stage.setTitle("Voto Computado");
 
-            Stage loginStage = (Stage) confirma.getScene().getWindow();
-            loginStage.close();
+                Stage loginStage = (Stage) confirma.getScene().getWindow();
+                loginStage.close();
 
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            semCandidato.setText("Você não selecionou um candidato");
         }
     }
 }
