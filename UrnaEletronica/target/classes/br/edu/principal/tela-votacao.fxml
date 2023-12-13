@@ -61,15 +61,11 @@
         <Button fx:id="confirma" layoutX="517.0" layoutY="442.0" mnemonicParsing="false" onAction="#handleConfirma" prefHeight="40.0" prefWidth="85.0" style="-fx-background-color: #7bca7d;" text="CONFIRMA">
             <font>
                 <Font name="Segoe UI Bold" size="12.0" />
-            </font></Button>
-<<<<<<< HEAD
+            </font>
+        </Button>
+
         <ImageView fx:id="foto" fitHeight="180.0" fitWidth="145.0" layoutX="-16.0" layoutY="-15.0" pickOnBounds="true" preserveRatio="true"/>
-=======
-        <ImageView fx:id="foto" fitHeight="180.0" fitWidth="145.0" layoutX="14.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@../../../../../../../../Urna-Eletronica-em-Java/UrnaEletronica/src/main/java/imagens/iflogo.png" />
-            </image></ImageView>
->>>>>>> 3f4c1c1c75e4da62fce2aa58110cc54ce43593e8
+
         <Label fx:id="chapa" layoutX="40.0" layoutY="320.0" prefHeight="23.0" prefWidth="191.0" text="CHAPA:">
             <font>
                 <Font name="Segoe UI" size="14.0" />
@@ -81,7 +77,8 @@
         <Label fx:id="presidente" layoutX="40.0" layoutY="344.0" prefHeight="23.0" prefWidth="207.0" text="PRESIDENTE:">
             <font>
                 <Font name="Segoe UI" size="14.0" />
-            </font></Label>
+            </font>
+        </Label>
         <Label fx:id="vice" layoutX="41.0" layoutY="368.0" prefHeight="23.0" prefWidth="181.0" text="VICE:">
             <font>
                 <Font name="Segoe UI" size="14.0" />

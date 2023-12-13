@@ -5,6 +5,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import java.io.IOException;
 
@@ -14,7 +16,17 @@ public class TelaAjuda {
     private Button sairAjuda;
     @FXML
     private Button sobreAjuda;
+    @FXML
+    private ImageView logoImageView;
 
+
+    @FXML
+    private void initialize() {
+
+        // Carregar a imagem durante a inicialização
+        Image logoImage = new Image(getClass().getResource("/imagens/iflogo.png").toExternalForm());
+        logoImageView.setImage(logoImage);
+    }
     @FXML
     private void handleSobre() {
         try{

@@ -13,7 +13,7 @@
 
       <TextField fx:id="newName" layoutX="202.0" layoutY="210.0" prefHeight="40.0" prefWidth="235.0" promptText="Nome Completo" />
       <TextField fx:id="newRegistration" layoutX="202.0" layoutY="270.0" prefHeight="40.0" prefWidth="235.0" promptText="Matrícula" />
-      <TextField fx:id="newPasswordTextField" layoutX="202.0" layoutY="331.0" prefHeight="40.0" prefWidth="235.0" />
+      <TextField fx:id="newPasswordTextField" layoutX="202.0" layoutY="331.0" prefHeight="40.0" prefWidth="235.0" promptText="Senha" />
       <PasswordField fx:id="newPassword" layoutX="202.0" layoutY="331.0" prefHeight="40.0" prefWidth="235.0" promptText="Senha" />
       <CheckBox fx:id="showPasswordCheckBox" layoutX="410.0" layoutY="343.0" mnemonicParsing="false" onAction="#handleShowPassword" />
       <Button fx:id="newRegister" layoutX="210.0" layoutY="399.0" mnemonicParsing="false" onAction="#handleCadastrar" prefHeight="40.0" prefWidth="220.0" text="Cadastrar">
@@ -27,13 +27,10 @@
          </font>
       </Text>
       <Rectangle arcWidth="5.0" fill="#135000" height="70.0" smooth="false" stroke="BLACK" strokeMiterLimit="0.0" strokeType="INSIDE" strokeWidth="0.0" width="631.0" />
-<<<<<<< HEAD
+
       <ImageView fx:id="logoImageView" fitHeight="50.0" fitWidth="181.13" layoutX="20.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" />
       <Button fx:id="voltaLogin" graphicTextGap="0.0" layoutX="420.0" layoutY="22.0" mnemonicParsing="false" onAction="#handleVoltar" style="-fx-background-color: 135000;" text="Voltar" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP">
-=======
-      <ImageView fitHeight="50.0" fitWidth="181.13" layoutX="20.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" />
-      <Button fx:id="voltaCadastro" graphicTextGap="0.0" layoutX="420.0" layoutY="22.0" mnemonicParsing="false" onAction="#handleVoltar" style="-fx-background-color: 135000;" text="Voltar" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP">
->>>>>>> 3f4c1c1c75e4da62fce2aa58110cc54ce43593e8
+
          <font>
             <Font name="Segoe UI" size="16.0" />
          </font>

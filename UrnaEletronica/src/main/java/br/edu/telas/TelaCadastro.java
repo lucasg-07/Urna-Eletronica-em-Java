@@ -25,7 +25,7 @@ public class TelaCadastro {
     @FXML
     private Button newRegister;
     @FXML
-    private Button voltaCadastro;
+    private Button voltaLogin;
     @FXML
     private Button ajudaCadastro;
     @FXML
@@ -49,7 +49,7 @@ public class TelaCadastro {
             stage.setScene(scene);
             stage.setTitle("Login");
 
-            Stage loginStage = (Stage) voltaCadastro.getScene().getWindow();
+            Stage loginStage = (Stage) voltaLogin.getScene().getWindow();
             loginStage.close();
 
             stage.show();
