@@ -10,13 +10,14 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import br.edu.uteis.Candidato;
 import javafx.stage.Stage;
+import java.sql.ResultSet;
 
 import java.io.IOException;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 public class TelaVotacao {
 
@@ -36,43 +37,64 @@ public class TelaVotacao {
     private Label resultado;
 
     @FXML
-    private ImageView foto;
-
-    @FXML
     private ImageView logoImageView;
 
+    private String matricula;
+    private Candidato[] listaDeCandidatos;
 
-    Candidato candidato1 = new Candidato("Luiz Inácio", "PT", "Taveira", "img/testeL", 13);
-    Candidato candidato2 = new Candidato("Jair Bolsonaro", "PL", "Lucas G.", "img/testeB", 22);
-    Candidato nulo = new Candidato();
-    Candidato branco = new Candidato();
+    private Candidato nulo = new Candidato("Nulo", "", "", "", 0);
+    private Candidato branco = new Candidato("Branco", "", "", "", 0);
 
-    Candidato[] listaDeCandidatos;
-
-    {
-        listaDeCandidatos = new Candidato[2];
+    public void setMatricula(String matricula) {
+        this.matricula = matricula;
     }
 
     @FXML
     public void initialize() {
         listaDeCandidatos = new Candidato[2];
-        listaDeCandidatos[0] = candidato1;
-        listaDeCandidatos[1] = candidato2;
+        listaDeCandidatos[0] = new Candidato("Lucas Gonzaga", "PL", "Jonathan Freitas", "img/testeL", 24);
+        listaDeCandidatos[1] = new Candidato("Enzo Gabriela", "PT", "Kaike Desaparecido.", "img/testeB", 69);
 
         Image logoImage = new Image(getClass().getResource("/imagens/iflogo.png").toExternalForm());
         logoImageView.setImage(logoImage);
     }
 
-    private void encontrarCandidato(int Numero, String Resultado) {
+    public boolean verificarStatusVoto() {
+        String jdbcUrl = "jdbc:mysql://localhost:3306/students";
+        String dbUser = "root";
+        String dbPassword = "";
+        String query = "SELECT status FROM usuarios WHERE usuario = ?";
+
+        try (Connection conn = DriverManager.getConnection(jdbcUrl, dbUser, dbPassword);
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+
+            stmt.setString(1, matricula);
+
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    boolean status = rs.getBoolean("status");
+                    return status; // Retorna true se o usuário já votou
+                } else {
+                    return false; // Se não encontrou o usuário, considera como não votou
+                }
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    private void encontrarCandidato(int numero, String resultadoVoto) {
         boolean candidatoEncontrado = false;
 
         for (Candidato candidato : listaDeCandidatos) {
-            if (candidato.getNumero() == Numero) {
+            if (candidato.getNumero() == numero) {
                 System.out.printf("O valor corresponde à %s\n", candidato.getNome());
                 chapa.setText("CHAPA: " + candidato.getPartido());
                 presidente.setText("PRESIDENTE: " + candidato.getNome());
                 vice.setText("VICE: " + candidato.getVice());
-                resultado.setText(Resultado);
+                resultado.setText(resultadoVoto);
                 candidatoEncontrado = true;
                 break;
             }
@@ -87,24 +109,28 @@ public class TelaVotacao {
         }
     }
 
-    private void votarCandidato(int Numero, String ResultadoVoto) {
+    private void votarCandidato(int numero, String resultadoVoto, String registration) {
         boolean candidatoEncontrado = false;
 
         for (Candidato candidato : listaDeCandidatos) {
-            if (candidato.getNumero() == Numero) {
+            if (candidato.getNumero() == numero) {
                 System.out.printf("Voto computado para %s\n", candidato.getNome());
                 candidato.somaVotos();
                 System.out.printf("%s recebeu: %d votos\n", candidato.getNome(), candidato.getVotos());
                 candidatoEncontrado = true;
+
+                // Atualizar o campo 'status' no banco de dados para indicar que o usuário votou
+                atualizarStatusNoBanco(registration);
+
                 break;
             }
         }
 
         if (!candidatoEncontrado) {
-            if (ResultadoVoto.equals("NULO")) {
+            if (resultadoVoto.equals("NULO")) {
                 nulo.somaVotos();
                 System.out.printf("Voto nulo registrado -> %d\n", nulo.getVotos());
-            } else if (ResultadoVoto.equals("BRANCO")) {
+            } else if (resultadoVoto.equals("BRANCO")) {
                 branco.somaVotos();
                 System.out.printf("Voto em branco registrado -> %d\n", branco.getVotos());
             } else {
@@ -113,22 +139,35 @@ public class TelaVotacao {
         }
     }
 
+    private void atualizarStatusNoBanco(String registration) {
+        String jdbcUrl = "jdbc:mysql://localhost:3306/students";
+        String dbUser = "root";
+        String dbPassword = "";
+        String query = "UPDATE usuarios SET status = 1 WHERE usuario = ?";
+
+        try (Connection conn = DriverManager.getConnection(jdbcUrl, dbUser, dbPassword);
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+
+            stmt.setString(1, registration);
+
+            stmt.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
     @FXML
     private void handleTeclaNumerica(ActionEvent event) {
-        // Imprime "Pressionado" no console quando este método é chamado
         System.out.println("Pressionado");
 
-        // Verifica se o texto atual em 'resultado' é um ponto, se sim, limpa o texto
         if (resultado.getText().equals(".")) {
             resultado.setText("");
         }
 
-        // Obtém o botão que disparou o evento
         Button button = (Button) event.getSource();
 
-        // Verifica se o tamanho atual do texto em 'resultado' é menor que 2 (considerando '.' como um caractere)
         if (resultado.getText() != null && resultado.getText().length() < 2) {
-            // Adiciona o texto do botão ao texto existente em 'resultado'
             resultado.setText(resultado.getText() + button.getText());
             if (resultado.getText().length() == 2) {
                 int numvoto = Integer.parseInt(resultado.getText());
@@ -140,39 +179,30 @@ public class TelaVotacao {
 
     @FXML
     private void handleBranco() {
-        // Imprime no console indicando que o usuário escolheu votar em branco
         System.out.println("Branco Pressionado");
-
-        // Define o texto exibido no componente 'resultado' como "BRANCO"
         resultado.setText("BRANCO");
         chapa.setText("");
         presidente.setText("");
         vice.setText("");
     }
 
-
     @FXML
     private void handleCorrige() {
-        // Imprime no console indicando que o usuário optou por corrigir a escolha de candidato
         System.out.println("Corrige Pressionado");
-        // Limpa o texto exibido nos componentes 'resultado', 'chapa', 'presidente', 'vice'
         resultado.setText("");
         chapa.setText("CHAPA: ");
         presidente.setText("PRESIDENTE: ");
         vice.setText("VICE: ");
     }
 
-
     @FXML
     private void handleConfirma() {
-        // Imprime no console uma mensagem indicando a confirmação da escolha
         System.out.println("Confirma Pressionado");
-        // computar novos votos
         int numvoto = 0;
-        if (resultado.getText().matches("\\d+")) {
+        if (resultado.getText().matches("\\d+") && matricula != null) {
             numvoto = Integer.parseInt(resultado.getText());
+            votarCandidato(numvoto, resultado.getText(), matricula);
         }
-        votarCandidato(numvoto, resultado.getText());
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/br/edu/principal/tela-fim.fxml"));
             Parent root = loader.load();
