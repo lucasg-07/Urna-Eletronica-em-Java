@@ -99,6 +99,8 @@ public class TelaVotacao {
 
                 // Adicionar o voto na coluna 'voto' no banco de dados
                 adicionarVotoNoBanco(matricula, numero);
+
+                // Adicionar a lógica para alterar a imagem aqui
                 break;
             }
         }
