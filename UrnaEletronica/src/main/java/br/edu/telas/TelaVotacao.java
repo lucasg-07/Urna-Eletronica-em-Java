@@ -38,6 +38,8 @@ public class TelaVotacao {
 
     @FXML
     private ImageView logoImageView;
+    @FXML
+    private ImageView fotoCandidato;
 
     private String matricula;
     private Candidato[] listaDeCandidatos;
@@ -52,8 +54,8 @@ public class TelaVotacao {
     @FXML
     public void initialize() {
         listaDeCandidatos = new Candidato[2];
-        listaDeCandidatos[0] = new Candidato("Lucas Gonzaga", "PL", "Jonathan Freitas", "img/testeL", 24);
-        listaDeCandidatos[1] = new Candidato("Enzo Gabriela", "PT", "Kaike Desaparecido.", "img/testeB", 69);
+        listaDeCandidatos[0] = new Candidato("Lucas Gonzaga", "PL", "Jonathan Freitas", "/imagens/lucas.jpg", 24);
+        listaDeCandidatos[1] = new Candidato("Enzo Gabriela", "PT", "Kaike Desaparecido.", "/imagens/enzo.jpg", 69);
 
         Image logoImage = new Image(getClass().getResource("/imagens/iflogo.png").toExternalForm());
         logoImageView.setImage(logoImage);
@@ -99,6 +101,7 @@ public class TelaVotacao {
 
                 // Adicionar o voto na coluna 'voto' no banco de dados
                 adicionarVotoNoBanco(matricula, numero);
+                exibirImagemCandidato(numero);
                 break;
             }
         }
@@ -113,7 +116,6 @@ public class TelaVotacao {
                 // Adicionar o voto nulo no banco de dados
                 adicionarVotoNoBanco(matricula, 100); // 100 pode ser um valor que representa o voto nulo
             } else if (resultado.getText().equals("BRANCO")) {
-                branco.somaVotos();
                 System.out.printf("Voto em branco registrado -> %d\n", branco.getVotos());
                 // Adicionar o voto em branco no banco de dados
                 adicionarVotoNoBanco(matricula, 101); // 101 pode ser um valor que representa o voto em branco
@@ -124,14 +126,30 @@ public class TelaVotacao {
         }
     }
 
+    private void exibirImagemCandidato(int numero) {
+
+            for (Candidato candidato : listaDeCandidatos) {
+                if (candidato.getNumero() == numero) {
+                    String imagePath = candidato.getImagem();
+
+                    if (imagePath != null) {
+                        System.out.println(getClass().getResource(imagePath));
+                        Image imagemCandidato = new Image(getClass().getResource(imagePath).toExternalForm());
+                        fotoCandidato.setImage(imagemCandidato);
+                    } else {
+                        System.out.println("Caminho da imagem do candidato é nulo.");
+                    }
+                    break;
+                }
+            }
+    }
+
+
+
     private void votarCandidato(int numero, String registration) {
 
         for (Candidato candidato : listaDeCandidatos) {
             if (candidato.getNumero() == numero) {
-                System.out.printf("Voto computado para %s\n", candidato.getNome());
-                candidato.somaVotos();
-                System.out.printf("%s recebeu: %d votos\n", candidato.getNome(), candidato.getVotos());
-
                 // Atualizar o campo 'status' no banco de dados para indicar que o usuário votou
                 atualizarStatusNoBanco(registration);
 
@@ -147,7 +165,7 @@ public class TelaVotacao {
         String jdbcUrl = "jdbc:mysql://localhost:3306/students";
         String dbUser = "root";
         String dbPassword = "";
-        String query = "UPDATE usuarios SET status = 1, voto = ? WHERE usuario = ?";
+        String query = "UPDATE usuarios SET voto = ? WHERE usuario = ?";
 
         try (Connection conn = DriverManager.getConnection(jdbcUrl, dbUser, dbPassword);
              PreparedStatement stmt = conn.prepareStatement(query)) {
@@ -194,7 +212,6 @@ public class TelaVotacao {
             resultado.setText(resultado.getText() + button.getText());
             if (resultado.getText().length() == 2) {
                 int numvoto = Integer.parseInt(resultado.getText());
-                System.out.printf("%d\n", numvoto);
                 encontrarCandidato(numvoto, resultado.getText());
             }
         }
@@ -207,15 +224,17 @@ public class TelaVotacao {
         chapa.setText("");
         presidente.setText("");
         vice.setText("");
+        fotoCandidato.setImage(null);
     }
 
     @FXML
     private void handleCorrige() {
         System.out.println("Corrige Pressionado");
         resultado.setText("");
-        chapa.setText("CHAPA: ");
+        chapa.setText("PARTIDO: ");
         presidente.setText("PRESIDENTE: ");
         vice.setText("VICE: ");
+        fotoCandidato.setImage(null);
     }
 
     @FXML

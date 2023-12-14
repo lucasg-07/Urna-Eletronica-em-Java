@@ -2,54 +2,44 @@ package br.edu.uteis;
 
 public class Candidato {
 
-    protected String Nome;
-    protected String Partido;
-    protected String Vice;
-    protected String Imagem;
-    protected int Numero;
-    protected int Votos;
+    private String nome;
+    private String partido;
+    private String vice;
+    private String imagem;
+    private int numero;
+    private int votos;
 
-    public Candidato(String nome, String partido, String vice, String Imagem, int numero) {
-        this.Nome = nome;
-        this.Partido = partido;
-        this.Vice = vice;
-        this.Numero = numero;
-        this.Imagem = Imagem;
-        this.Votos = 0;
+    public Candidato(String nome, String partido, String vice, String imagem, int numero) {
+        this.nome = nome;
+        this.partido = partido;
+        this.vice = vice;
+        this.imagem = imagem;
+        this.numero = numero;
+        this.votos = 0;
     }
-
-    public Candidato() {
-        this.Votos = 0;
-    }
-
 
     public String getNome() {
-        return Nome;
+        return nome;
     }
 
     public String getPartido() {
-        return Partido;
+        return partido;
     }
 
     public String getVice() {
-        return Vice;
+        return vice;
     }
 
     public String getImagem() {
-        return Imagem;
+        return imagem;
     }
 
     public int getNumero() {
-        return Numero;
+        return numero;
     }
 
     public int getVotos() {
-        return Votos;
-    }
-
-    public int somaVotos() {
-        this.Votos += 1;
-        return Votos;
+        return votos;
     }
 
 }
