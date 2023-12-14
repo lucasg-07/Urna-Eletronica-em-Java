@@ -2,6 +2,7 @@ module com.example.UrnaEletronica {
     requires javafx.controls;
     requires javafx.fxml;
     requires java.sql;
+    requires javafx.media;
 
 
     opens br.edu.principal to javafx.fxml;

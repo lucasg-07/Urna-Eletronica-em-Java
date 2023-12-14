@@ -57,6 +57,14 @@ public class TelaCadastro {
             e.printStackTrace();
         }
     }
+    private void handleTabKey(javafx.scene.input.KeyEvent event, javafx.scene.control.Control nextControl) {
+        if (event.getCode() == javafx.scene.input.KeyCode.TAB) {
+            event.consume(); // Consumir o evento para evitar movimento de foco padrão
+
+            // Mover o foco para o próximo controle
+            nextControl.requestFocus();
+        }
+    }
 
     @FXML
     private void handleAjuda(ActionEvent click) {
@@ -115,6 +123,11 @@ public class TelaCadastro {
         });
         Image logoImage = new Image(getClass().getResource("/imagens/iflogo.png").toExternalForm());
         logoImageView.setImage(logoImage);
+        newName.setOnKeyPressed(event -> handleTabKey(event, newRegistration));
+        newRegistration.setOnKeyPressed(event -> handleTabKey(event, newPassword));
+        newPassword.setOnKeyPressed(event -> handleTabKey(event, showPasswordCheckBox));
+        showPasswordCheckBox.setOnKeyPressed(event -> handleTabKey(event, newRegister));
+
     }
 
     @FXML

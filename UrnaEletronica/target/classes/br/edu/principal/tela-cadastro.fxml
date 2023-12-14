@@ -13,6 +13,7 @@
 
       <TextField fx:id="newName" layoutX="202.0" layoutY="210.0" prefHeight="40.0" prefWidth="235.0" promptText="Nome Completo" />
       <TextField fx:id="newRegistration" layoutX="202.0" layoutY="270.0" prefHeight="40.0" prefWidth="235.0" promptText="Matrícula" />
+
       <TextField fx:id="newPasswordTextField" layoutX="202.0" layoutY="331.0" prefHeight="40.0" prefWidth="235.0" promptText="Senha" />
       <PasswordField fx:id="newPassword" layoutX="202.0" layoutY="331.0" prefHeight="40.0" prefWidth="235.0" promptText="Senha" />
       <CheckBox fx:id="showPasswordCheckBox" layoutX="410.0" layoutY="343.0" mnemonicParsing="false" onAction="#handleShowPassword" />

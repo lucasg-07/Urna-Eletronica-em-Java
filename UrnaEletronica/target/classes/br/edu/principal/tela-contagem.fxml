@@ -40,8 +40,8 @@
         </font>
     </Label>
 
-    <ImageView fx:id="lucasFoto" fitHeight="157.0" fitWidth="156.0" layoutX="123.0" layoutY="146.0" pickOnBounds="true" preserveRatio="true" />
-    <ImageView fx:id="enzoFoto" fitHeight="157.0" fitWidth="156.0" layoutX="355.0" layoutY="146.0" pickOnBounds="true" preserveRatio="true" />
+    <ImageView fx:id="lucasFoto" fitHeight="157.0" fitWidth="120.0" layoutX="141.0" layoutY="146.0" pickOnBounds="true" preserveRatio="true" />
+    <ImageView fx:id="enzoFoto" fitHeight="157.0" fitWidth="120.0" layoutX="373.0" layoutY="146.0" pickOnBounds="true" preserveRatio="true" />
 
     <Label alignment="CENTER" layoutX="101.0" layoutY="308.0" prefHeight="19.0" prefWidth="200.0" text="Lucas Gonzaga">
         <font>

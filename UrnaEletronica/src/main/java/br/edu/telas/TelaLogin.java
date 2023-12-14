@@ -124,6 +124,7 @@ public class TelaLogin {
 
                 // Verifique se o usuário já votou
                 if (controladorVotacao.verificarStatusVoto()) {
+                    this.unvalidLogin.setLayoutX(221);
                     this.unvalidLogin.setText("Você já votou, aguarde outra votação");
                 } else {
                     // Se o usuário ainda não votou, continue com a exibição da tela de votação
@@ -132,6 +133,7 @@ public class TelaLogin {
                     stage.show();
                 }
             } else {
+                this.unvalidLogin.setLayoutX(191);
                 this.unvalidLogin.setText("Falha na autenticação. Verifique as credenciais.");
 
             }

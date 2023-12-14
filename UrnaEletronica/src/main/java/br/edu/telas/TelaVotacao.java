@@ -44,6 +44,7 @@ public class TelaVotacao {
     private String matricula;
     private Candidato[] listaDeCandidatos;
 
+
     private Candidato nulo = new Candidato("Nulo", "", "", "", 0);
     private Candidato branco = new Candidato("Branco", "", "", "", 0);
 
@@ -54,8 +55,8 @@ public class TelaVotacao {
     @FXML
     public void initialize() {
         listaDeCandidatos = new Candidato[2];
-        listaDeCandidatos[0] = new Candidato("Lucas Gonzaga", "PL", "Jonathan Freitas", "/imagens/lucas.jpg", 24);
-        listaDeCandidatos[1] = new Candidato("Enzo Gabriela", "PT", "Kaike Desaparecido.", "/imagens/enzo.jpg", 69);
+        listaDeCandidatos[0] = new Candidato("Lucas Gonzaga", "PL (Partido do Lapisco)", "Jonathan Freitas", "/imagens/lucas.jpg", 24);
+        listaDeCandidatos[1] = new Candidato("Enzo Gabriela", "PCL (Partido do Contra o Lapisco)", "Kaike Desaparecido", "/imagens/enzo.jpg", 69);
 
         Image logoImage = new Image(getClass().getResource("/imagens/iflogo.png").toExternalForm());
         logoImageView.setImage(logoImage);
