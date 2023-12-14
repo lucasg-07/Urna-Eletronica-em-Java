@@ -31,6 +31,8 @@ public class TelaContagem {
     @FXML
     private Label nulo;
     @FXML
+    private Label total;
+    @FXML
     private Label branco;
     @FXML
     private Button voltaLogin;
@@ -40,6 +42,7 @@ public class TelaContagem {
     private Button sobreContagem;
     @FXML
     private ImageView enzoFoto;
+
 
 
 
@@ -140,10 +143,12 @@ public class TelaContagem {
         int votosNulo = contarVotos(100);
         int votosBranco = contarVotos(101);
 
+        int totalVotos = votosCandidato24 + votosCandidato69 + votosNulo + votosBranco;
+
         candidato24.setText(votosCandidato24 + " votos");
         candidato69.setText(votosCandidato69 + " votos");
         nulo.setText("Nulo : " + votosNulo + " votos");
         branco.setText("Branco : " +votosBranco + " votos");
-
+        total.setText("Total : " + totalVotos);
     }
 }

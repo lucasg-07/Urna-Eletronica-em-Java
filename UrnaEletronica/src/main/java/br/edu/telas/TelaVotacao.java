@@ -93,7 +93,6 @@ public class TelaVotacao {
 
         for (Candidato candidato : listaDeCandidatos) {
             if (candidato.getNumero() == numero) {
-                System.out.printf("O valor corresponde à %s\n", candidato.getNome());
                 chapa.setText("CHAPA: " + candidato.getPartido());
                 presidente.setText("PRESIDENTE: " + candidato.getNome());
                 vice.setText("VICE: " + candidato.getVice());
@@ -117,13 +116,9 @@ public class TelaVotacao {
                 // Adicionar o voto nulo no banco de dados
                 adicionarVotoNoBanco(matricula, 100); // 100 pode ser um valor que representa o voto nulo
             } else if (resultado.getText().equals("BRANCO")) {
-                System.out.printf("Voto em branco registrado -> %d\n", branco.getVotos());
                 // Adicionar o voto em branco no banco de dados
                 adicionarVotoNoBanco(matricula, 101); // 101 pode ser um valor que representa o voto em branco
-            } else {
-                System.out.println("Nenhum candidato corresponde ao número informado");
             }
-
         }
     }
 
@@ -134,11 +129,8 @@ public class TelaVotacao {
                     String imagePath = candidato.getImagem();
 
                     if (imagePath != null) {
-                        System.out.println(getClass().getResource(imagePath));
                         Image imagemCandidato = new Image(getClass().getResource(imagePath).toExternalForm());
                         fotoCandidato.setImage(imagemCandidato);
-                    } else {
-                        System.out.println("Caminho da imagem do candidato é nulo.");
                     }
                     break;
                 }
@@ -201,7 +193,6 @@ public class TelaVotacao {
 
     @FXML
     private void handleTeclaNumerica(ActionEvent event) {
-        System.out.println("Pressionado");
 
         if (resultado.getText().equals(".")) {
             resultado.setText("");
@@ -220,7 +211,7 @@ public class TelaVotacao {
 
     @FXML
     private void handleBranco() {
-        System.out.println("Branco Pressionado");
+
         resultado.setText("BRANCO");
         chapa.setText("");
         presidente.setText("");
@@ -230,7 +221,7 @@ public class TelaVotacao {
 
     @FXML
     private void handleCorrige() {
-        System.out.println("Corrige Pressionado");
+
         resultado.setText("");
         chapa.setText("PARTIDO: ");
         presidente.setText("PRESIDENTE: ");
@@ -240,15 +231,25 @@ public class TelaVotacao {
 
     @FXML
     private void handleConfirma() {
-        System.out.println("Confirma Pressionado");
         int numvoto = 0;
+
         if (resultado.getText().matches("\\d+") && matricula != null) {
             numvoto = Integer.parseInt(resultado.getText());
             votarCandidato(numvoto, matricula);
-        }else if (resultado.getText().equals("BRANCO")) {
+        } else if (resultado.getText().equals("BRANCO")) {
             // Adicionar o voto em branco no banco de dados
             adicionarVotoNoBanco(matricula, 101); // 101 pode ser um valor que representa o voto em branco
+        } else if (resultado.getText().equals("NULO")) {
+            // Adicionar o voto nulo no banco de dados
+            adicionarVotoNoBanco(matricula, 100); // 100 pode ser um valor que representa o voto nulo
+        } else {
+            chapa.setText("");
+            presidente.setText("");
+            vice.setText("");
+            resultado.setText("Escolha inválida");
+            return; // Sai do método se a escolha não for válida
         }
+
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/br/edu/principal/tela-fim.fxml"));
             Parent root = loader.load();

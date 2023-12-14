@@ -174,8 +174,6 @@ public class TelaCadastro {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-            } else {
-                System.out.println("Erro ao criar usuário");
             }
         } else {
             this.unvalidRegister.setText("* Nenhum campo deve estar vazio!");
