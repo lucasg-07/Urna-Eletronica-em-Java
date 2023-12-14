@@ -11,12 +11,12 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
-import java.sql.ResultSet;
 
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class TelaVotacao {
@@ -96,46 +96,69 @@ public class TelaVotacao {
                 vice.setText("VICE: " + candidato.getVice());
                 resultado.setText(resultadoVoto);
                 candidatoEncontrado = true;
+
+                // Adicionar o voto na coluna 'voto' no banco de dados
+                adicionarVotoNoBanco(matricula, numero);
                 break;
             }
         }
 
         if (!candidatoEncontrado) {
-            System.out.println("O valor não corresponde a nenhum candidato");
             resultado.setText("NULO");
             chapa.setText("");
             presidente.setText("");
             vice.setText("");
+
+            if (resultado.getText().equals("NULO")) {
+                // Adicionar o voto nulo no banco de dados
+                adicionarVotoNoBanco(matricula, 100); // 100 pode ser um valor que representa o voto nulo
+            } else if (resultado.getText().equals("BRANCO")) {
+                branco.somaVotos();
+                System.out.printf("Voto em branco registrado -> %d\n", branco.getVotos());
+                // Adicionar o voto em branco no banco de dados
+                adicionarVotoNoBanco(matricula, 101); // 101 pode ser um valor que representa o voto em branco
+            } else {
+                System.out.println("Nenhum candidato corresponde ao número informado");
+            }
+
         }
     }
 
-    private void votarCandidato(int numero, String resultadoVoto, String registration) {
-        boolean candidatoEncontrado = false;
+    private void votarCandidato(int numero, String registration) {
 
         for (Candidato candidato : listaDeCandidatos) {
             if (candidato.getNumero() == numero) {
                 System.out.printf("Voto computado para %s\n", candidato.getNome());
                 candidato.somaVotos();
                 System.out.printf("%s recebeu: %d votos\n", candidato.getNome(), candidato.getVotos());
-                candidatoEncontrado = true;
 
                 // Atualizar o campo 'status' no banco de dados para indicar que o usuário votou
                 atualizarStatusNoBanco(registration);
 
+                // Adicionar o voto na coluna 'voto' no banco de dados
+                adicionarVotoNoBanco(registration, numero);
+
                 break;
             }
         }
+    }
 
-        if (!candidatoEncontrado) {
-            if (resultadoVoto.equals("NULO")) {
-                nulo.somaVotos();
-                System.out.printf("Voto nulo registrado -> %d\n", nulo.getVotos());
-            } else if (resultadoVoto.equals("BRANCO")) {
-                branco.somaVotos();
-                System.out.printf("Voto em branco registrado -> %d\n", branco.getVotos());
-            } else {
-                System.out.println("Nenhum candidato corresponde ao número informado");
-            }
+    private void adicionarVotoNoBanco(String registration, int numero) {
+        String jdbcUrl = "jdbc:mysql://localhost:3306/students";
+        String dbUser = "root";
+        String dbPassword = "";
+        String query = "UPDATE usuarios SET status = 1, voto = ? WHERE usuario = ?";
+
+        try (Connection conn = DriverManager.getConnection(jdbcUrl, dbUser, dbPassword);
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+
+            stmt.setInt(1, numero);
+            stmt.setString(2, registration);
+
+            stmt.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 
@@ -201,7 +224,10 @@ public class TelaVotacao {
         int numvoto = 0;
         if (resultado.getText().matches("\\d+") && matricula != null) {
             numvoto = Integer.parseInt(resultado.getText());
-            votarCandidato(numvoto, resultado.getText(), matricula);
+            votarCandidato(numvoto, matricula);
+        }else if (resultado.getText().equals("BRANCO")) {
+            // Adicionar o voto em branco no banco de dados
+            adicionarVotoNoBanco(matricula, 101); // 101 pode ser um valor que representa o voto em branco
         }
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/br/edu/principal/tela-fim.fxml"));

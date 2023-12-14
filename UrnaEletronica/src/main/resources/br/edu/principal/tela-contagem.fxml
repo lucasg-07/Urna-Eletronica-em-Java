@@ -1,10 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 
-
-<?import javafx.scene.image.ImageView?>
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.telas.TelaContagem">
+<AnchorPane prefHeight="543.0" prefWidth="630.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.telas.TelaContagem">
     <ImageView fx:id="logoImageView" fitHeight="50.0" fitWidth="181.13" layoutX="20.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" />
+    <Rectangle arcWidth="5.0" fill="#135000" height="70.0" smooth="false" stroke="BLACK" strokeMiterLimit="0.0" strokeType="INSIDE" strokeWidth="0.0" width="631.0" />
+    <Button fx:id="voltaLogin" graphicTextGap="0.0" layoutX="420.0" layoutY="22.0" mnemonicParsing="false" onAction="#handleVoltar" style="-fx-background-color: 135000;" text="Voltar" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP">
 
+        <font>
+            <Font name="Segoe UI" size="16.0" />
+        </font>
+    </Button>
+    <Button fx:id="ajudaContagem" graphicTextGap="0.0" layoutX="540.0" layoutY="22.0" mnemonicParsing="false" onAction="#handleAjuda" style="-fx-background-color: 135000;" text="Ajuda" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP">
+        <font>
+            <Font name="Segoe UI" size="16.0" />
+        </font>
+    </Button>
+    <Button fx:id="sobreContagem" layoutX="480.0" layoutY="22.0" mnemonicParsing="false" onAction="#handleSobre" style="-fx-background-color: 135000;" text="Sobre" textAlignment="CENTER" textFill="WHITE">
+        <font>
+            <Font name="Segoe UI" size="16.0" />
+        </font>
+    </Button>
+
+    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d9d9d9" height="300.0" layoutX="101.0" layoutY="131.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="200.0" />
+    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d9d9d9" height="300.0" layoutX="332.0" layoutY="131.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="200.0" />
+    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d9d9d9" height="50.0" layoutX="81.0" layoutY="445.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="470.0" />
+    <Label fx:id="votosBranco" alignment="CENTER" layoutX="314.0" layoutY="460.0" prefHeight="19.0" prefWidth="235.0" text="Branco: ">
+        <font>
+            <Font name="Segoe UI Bold" size="16.0" />
+        </font>
+    </Label>
+    <Label fx:id="votosNulo" alignment="CENTER" layoutX="83.0" layoutY="460.0" prefHeight="19.0" prefWidth="235.0" text="Nulo: ">
+        <font>
+            <Font name="Segoe UI Bold" size="16.0" />
+        </font>
+    </Label>
+
+    <ImageView fx:id="fotoLucas" fitHeight="132.0" fitWidth="99.0" layoutX="151.0" layoutY="158.0" pickOnBounds="true" preserveRatio="true" />
+    <ImageView fx:id="fotoEnzo" fitHeight="132.0" fitWidth="99.0" layoutX="383.0" layoutY="158.0" pickOnBounds="true" preserveRatio="true" />
+
+    <Label alignment="CENTER" layoutX="101.0" layoutY="308.0" prefHeight="19.0" prefWidth="200.0" text="Lucas Gonzaga">
+        <font>
+            <Font name="Segoe UI Bold" size="16.0" />
+        </font>
+    </Label>
+    <Label alignment="CENTER" layoutX="333.0" layoutY="308.0" prefHeight="19.0" prefWidth="200.0" text="Enzo Gabriel">
+        <font>
+            <Font name="Segoe UI Bold" size="16.0" />
+        </font>
+    </Label>
+    <Label fx:id="candidato24" alignment="CENTER" layoutX="100.0" layoutY="340.0" prefHeight="19.0" prefWidth="200.0" >
+        <font>
+            <Font name="Segoe UI Bold" size="16.0" />
+        </font>
+    </Label>
+    <Label fx:id="candidato69" alignment="CENTER" layoutX="332.0" layoutY="340.0" prefHeight="19.0" prefWidth="200.0" >
+        <font>
+            <Font name="Segoe UI Bold" size="16.0" />
+        </font>
+    </Label>
 </AnchorPane>

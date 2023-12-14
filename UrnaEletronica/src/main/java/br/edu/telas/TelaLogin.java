@@ -26,6 +26,8 @@ public class TelaLogin {
     @FXML
     private Button sobreLogin;
     @FXML
+    private Button contagemLogin;
+    @FXML
     private TextField usernameField;
 
     @FXML
@@ -137,7 +139,24 @@ public class TelaLogin {
             e.printStackTrace();
         }
     }
+    @FXML
+    private void handleContagem() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/br/edu/principal/tela-contagem.fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.setTitle("Sobre");
 
+            Stage loginStage = (Stage) contagemLogin.getScene().getWindow();
+            loginStage.close();
+
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     @FXML
     private void handleSobre() {
         try {

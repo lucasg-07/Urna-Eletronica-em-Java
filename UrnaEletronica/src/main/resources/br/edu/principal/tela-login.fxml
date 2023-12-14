@@ -12,7 +12,7 @@
         <TextField fx:id="usernameField" layoutX="202.0" layoutY="250.0" prefHeight="40.0" prefWidth="235.0" promptText="Matrícula/SIAPE" />
 
         <PasswordField fx:id="passwordField" layoutX="202.0" layoutY="310.0" prefHeight="40.0" prefWidth="235.0" promptText="Senha" />
-        <TextField fx:id="newPasswordTextField" layoutX="202.0" layoutY="310.0" prefHeight="40.0" prefWidth="235.0" promptText="Senha"/>
+        <TextField fx:id="newPasswordTextField" layoutX="202.0" layoutY="310.0" prefHeight="40.0" prefWidth="235.0" promptText="Senha" />
         <CheckBox fx:id="showPasswordCheckBox" layoutX="406.0" layoutY="321.0" mnemonicParsing="false" onAction="#handleShowPassword" />
         <Button fx:id="entrarLogin" layoutX="225.0" layoutY="388.0" mnemonicParsing="false" onAction="#handleEntrar" prefHeight="40.0" prefWidth="181.0" text="Entrar">
             <font>
@@ -25,9 +25,12 @@
             </font>
         </Text>
         <Rectangle arcWidth="5.0" fill="#135000" height="70.0" smooth="false" stroke="BLACK" strokeMiterLimit="0.0" strokeType="INSIDE" strokeWidth="0.0" width="631.0" />
-
+        <Button fx:id="contagemLogin" graphicTextGap="0.0" layoutX="340.0" layoutY="22.0" mnemonicParsing="false" onAction="#handleContagem" style="-fx-background-color: 135000;" text="Resultado parcial" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP">
+            <font>
+                <Font name="Segoe UI" size="16.0" />
+            </font>
+        </Button>
         <Button fx:id="ajudaLogin" graphicTextGap="0.0" layoutX="540.0" layoutY="22.0" mnemonicParsing="false" onAction="#handleAjuda" style="-fx-background-color: 135000;" text="Ajuda" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP">
-
             <font>
                 <Font name="Segoe UI" size="16.0" />
             </font>
