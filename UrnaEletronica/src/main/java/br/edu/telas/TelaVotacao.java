@@ -16,7 +16,6 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class TelaVotacao {
@@ -43,7 +42,6 @@ public class TelaVotacao {
 
     private String matricula;
     private Candidato[] listaDeCandidatos;
-
 
     private Candidato nulo = new Candidato("Nulo", "", "", "", 0);
     private Candidato branco = new Candidato("Branco", "", "", "", 0);
@@ -73,12 +71,11 @@ public class TelaVotacao {
 
             stmt.setString(1, matricula);
 
-            try (ResultSet rs = stmt.executeQuery()) {
+            try (var rs = stmt.executeQuery()) {
                 if (rs.next()) {
-                    boolean status = rs.getBoolean("status");
-                    return status; // Retorna true se o usuário já votou
+                    return rs.getBoolean("status");
                 } else {
-                    return false; // Se não encontrou o usuário, considera como não votou
+                    return false;
                 }
             }
 
@@ -99,8 +96,6 @@ public class TelaVotacao {
                 resultado.setText(resultadoVoto);
                 candidatoEncontrado = true;
 
-                // Adicionar o voto na coluna 'voto' no banco de dados
-                adicionarVotoNoBanco(matricula, numero);
                 exibirImagemCandidato(numero);
                 break;
             }
@@ -111,41 +106,26 @@ public class TelaVotacao {
             chapa.setText("");
             presidente.setText("");
             vice.setText("");
-
-            if (resultado.getText().equals("NULO")) {
-                // Adicionar o voto nulo no banco de dados
-                adicionarVotoNoBanco(matricula, 100); // 100 pode ser um valor que representa o voto nulo
-            } else if (resultado.getText().equals("BRANCO")) {
-                // Adicionar o voto em branco no banco de dados
-                adicionarVotoNoBanco(matricula, 101); // 101 pode ser um valor que representa o voto em branco
-            }
         }
     }
 
     private void exibirImagemCandidato(int numero) {
-
-            for (Candidato candidato : listaDeCandidatos) {
-                if (candidato.getNumero() == numero) {
-                    String imagePath = candidato.getImagem();
-
-                    if (imagePath != null) {
-                        Image imagemCandidato = new Image(getClass().getResource(imagePath).toExternalForm());
-                        fotoCandidato.setImage(imagemCandidato);
-                    }
-                    break;
-                }
-            }
-    }
-
-
-
-    private void votarCandidato(int numero, String registration) {
-
         for (Candidato candidato : listaDeCandidatos) {
             if (candidato.getNumero() == numero) {
-                // Atualizar o campo 'status' no banco de dados para indicar que o usuário votou
-                atualizarStatusNoBanco(registration);
+                String imagePath = candidato.getImagem();
 
+                if (imagePath != null) {
+                    Image imagemCandidato = new Image(getClass().getResource(imagePath).toExternalForm());
+                    fotoCandidato.setImage(imagemCandidato);
+                }
+                break;
+            }
+        }
+    }
+
+    private void votarCandidato(int numero, String registration) {
+        for (Candidato candidato : listaDeCandidatos) {
+            if (candidato.getNumero() == numero) {
                 // Adicionar o voto na coluna 'voto' no banco de dados
                 adicionarVotoNoBanco(registration, numero);
 
@@ -158,7 +138,7 @@ public class TelaVotacao {
         String jdbcUrl = "jdbc:mysql://localhost:3306/students";
         String dbUser = "root";
         String dbPassword = "";
-        String query = "UPDATE usuarios SET voto = ? WHERE usuario = ?";
+        String query = "UPDATE usuarios SET voto = ?, status = 1 WHERE usuario = ?";
 
         try (Connection conn = DriverManager.getConnection(jdbcUrl, dbUser, dbPassword);
              PreparedStatement stmt = conn.prepareStatement(query)) {
@@ -173,27 +153,8 @@ public class TelaVotacao {
         }
     }
 
-    private void atualizarStatusNoBanco(String registration) {
-        String jdbcUrl = "jdbc:mysql://localhost:3306/students";
-        String dbUser = "root";
-        String dbPassword = "";
-        String query = "UPDATE usuarios SET status = 1 WHERE usuario = ?";
-
-        try (Connection conn = DriverManager.getConnection(jdbcUrl, dbUser, dbPassword);
-             PreparedStatement stmt = conn.prepareStatement(query)) {
-
-            stmt.setString(1, registration);
-
-            stmt.executeUpdate();
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
     @FXML
     private void handleTeclaNumerica(ActionEvent event) {
-
         if (resultado.getText().equals(".")) {
             resultado.setText("");
         }
@@ -211,7 +172,6 @@ public class TelaVotacao {
 
     @FXML
     private void handleBranco() {
-
         resultado.setText("BRANCO");
         chapa.setText("");
         presidente.setText("");
@@ -221,7 +181,6 @@ public class TelaVotacao {
 
     @FXML
     private void handleCorrige() {
-
         resultado.setText("");
         chapa.setText("PARTIDO: ");
         presidente.setText("PRESIDENTE: ");
@@ -243,12 +202,17 @@ public class TelaVotacao {
             // Adicionar o voto nulo no banco de dados
             adicionarVotoNoBanco(matricula, 100); // 100 pode ser um valor que representa o voto nulo
         } else {
+            resultado.setText("Escolha inválida");
             chapa.setText("");
             presidente.setText("");
             vice.setText("");
-            resultado.setText("Escolha inválida");
             return; // Sai do método se a escolha não for válida
         }
+
+        
+
+        // Atualiza o status do voto
+        atualizarStatusNoBanco(matricula);
 
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/br/edu/principal/tela-fim.fxml"));
@@ -263,6 +227,24 @@ public class TelaVotacao {
 
             stage.show();
         } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void atualizarStatusNoBanco(String registration) {
+        String jdbcUrl = "jdbc:mysql://localhost:3306/students";
+        String dbUser = "root";
+        String dbPassword = "";
+        String query = "UPDATE usuarios SET status = 1 WHERE usuario = ?";
+
+        try (Connection conn = DriverManager.getConnection(jdbcUrl, dbUser, dbPassword);
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+
+            stmt.setString(1, registration);
+
+            stmt.executeUpdate();
+
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
