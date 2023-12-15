@@ -1,0 +1,11 @@
+br\edu\telas\TelaCadastro.class
+br\edu\principal\Principal.class
+br\edu\telas\TelaContagem.class
+br\edu\telas\TelaVotacao.class
+br\edu\uteis\Candidato.class
+br\edu\telas\TelaSobre.class
+br\edu\telas\TelaFim$1.class
+module-info.class
+br\edu\telas\TelaFim.class
+br\edu\telas\TelaAjuda.class
+br\edu\telas\TelaLogin.class

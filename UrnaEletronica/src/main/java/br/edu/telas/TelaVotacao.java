@@ -209,7 +209,7 @@ public class TelaVotacao {
             return; // Sai do método se a escolha não for válida
         }
 
-        
+
 
         // Atualiza o status do voto
         atualizarStatusNoBanco(matricula);

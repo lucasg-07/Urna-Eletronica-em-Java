@@ -21,14 +21,9 @@
                 <Font size="16.0" />
             </font>
         </Button>
-      <Text layoutX="87.0" layoutY="174.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut luctus, purus eget hendrerit scelerisque, enim felis pellentesque mi, vel convallis ante mi eu urna. In condimentum nulla et pulvinar euismod. Phasellus vitae tortor ex. Mauris et convallis justo. Morbi ullamcorper tellus vel dapibus pulvinar. Praesent lacinia tellus nibh, a cursus diam hendrerit sit amet. Sed feugiat at nisl et consequat. Duis euismod placerat molestie. Fusce efficitur diam eu imperdiet pharetra. Vestibulum quis elit ac arcu ornare congue ut eu odio. Cras nec augue et lacus sollicitudin sollicitudin. Duis sollicitudin malesuada volutpat. Morbi viverra lectus aliquet dolor tristique finibus. Cras non lorem pretium, tincidunt eros sit amet, posuere tortor. Integer placerat ipsum quis nulla blandit, nec consectetur lorem tincidunt. Curabitur sapien nulla, porta nec dolor eu, interdum facilisis orci." textAlignment="CENTER" wrappingWidth="456.8000793457031">
+      <Text fx:id="ajudaTexto" layoutX="12.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="609.8000793457031">
          <font>
             <Font name="Segoe UI" size="16.0" />
-         </font>
-      </Text>
-      <Text layoutX="164.0" layoutY="152.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Instruções para usar este programa:">
-         <font>
-            <Font name="Segoe UI Bold" size="18.0" />
          </font>
       </Text>
     </children>
